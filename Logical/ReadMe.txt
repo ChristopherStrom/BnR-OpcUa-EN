@@ -1,59 +1,58 @@
-In diesem Beispiel wird die Implementierung von OpcUa-Funktionalitäten gezeigt.
-Es ist KEIN offizielles Beispiel und daher besteht für den Anwender kein Anspruch auf
-Erweiterung, Fehlerbehebung, Schulung oder Support. Auch die Fehlerfreiheit kann nicht
-garantiert werden.
+In this example, the implementation of OPC UA functionalities is demonstrated.
+This is NOT an official example, and therefore, the user is not entitled to any
+enhancements, bug fixes, training, or support. Error-free operation cannot be guaranteed either.
 
 Tasks
-	Template:				Ist ein Muster, um schneller neue Tasks im selben Format implementieren zu können.
-									Es wird für das Beispiel nicht benötigt.
-	ServerData: 		Stellt Variablen zur Verfügung, die am eigenen Server veröffentlicht werden und Variablen, welche
-									von den Clients beschrieben werden.
-	SrvDt64C:				Die Implementierung von 64-Bit-Werten in der Sprache ANSI-C;
-	SrvDt64ST:			Die Implementierung von 64-Bit-Werten in der Sprache StructuredText;
-	SrvMethC:				Die Implementierung benutzerdefinierten Server-Methoden in der Sprache ANSI-C.
-	SrvMethST:			Die Implementierung benutzerdefinierten Server-Methoden in der Sprache StructuredText.
-	SrvEvntC:				Anwenderseitiges Feuern eines Events in der Sprache ANSI-C.
-	SrvEvntST:			Anwenderseitiges Feuern eines Events in der Sprache StructuredText. Dieser Task ist disabled.
-	ClientC:				Die Implementierung des Clients in der Sprache ANSI-C.
-	ClientST:				Die Implementierung des Clients in der Sprache StructuredText.
-	BrbUaCltC:			Die Implementierung des Clients mithilfe der Bibiothk BrbLibUa in der Sprache ANSI-C.
-	BrbUaCltST:			Die Implementierung des Clients mithilfe der Bibiothk BrbLibUa in der StructuredText.
-	OpcUaAny:				Stellt lediglich Variablen bereit, welche am OpcUaAny-Client gemappt sind. 
-	BrbUaSrvC:			Die Implementierung des Servers mithilfe der Bibiothk BrbLibUa in der Sprache ANSI-C.
-	BrbUaSrvST:			Die Implementierung des Servers mithilfe der Bibiothk BrbLibUa in der StructuredText.
-	UaCertsC:				Beispiel zur Laufzeit-Verwaltung von Zertifikaten in der Sprache ANSI-C.
-	UaCertsST:			Beispiel zur Laufzeit-Verwaltung von Zertifikaten in der Sprache StructuredText.
-	AirCondC:				Funktionelle Implementierung für das Beispiel eines eigenen Datenmodells in der Sprache ANSI-C.
-	AirCondST:			Funktionelle Implementierung für das Beispiel eines eigenen Datenmodells in der Sprache StructuredText.
-	PubSub:					Exemplarische Konfiguration einer PubSub-Verbindung.
 
-In jedem Task ist ebenfalls eine ReadMe.txt enthalten, die ihn näher beschreibt.
-Der Task 'SrvEvntST' ist disabled, damit das Event nicht vom ANSIC- und vom ST-Task gefeuert wird.
+Template: Serves as a template to quickly implement new tasks in the same format.
+It is not required for this example.
+ServerData: Provides variables that are published on the user's server and variables that can be written by clients.
+SrvDt64C: Implementation of 64-bit values in ANSI-C.
+SrvDt64ST: Implementation of 64-bit values in StructuredText.
+SrvMethC: Implementation of custom server methods in ANSI-C.
+SrvMethST: Implementation of custom server methods in StructuredText.
+SrvEvntC: User-side firing of an event in ANSI-C.
+SrvEvntST: User-side firing of an event in StructuredText. This task is disabled.
+ClientC: Implementation of the client in ANSI-C.
+ClientST: Implementation of the client in StructuredText.
+BrbUaCltC: Implementation of the client using the BrbLibUa library in ANSI-C.
+BrbUaCltST: Implementation of the client using the BrbLibUa library in StructuredText.
+OpcUaAny: Only provides variables mapped to the OpcUaAny client.
+BrbUaSrvC: Implementation of the server using the BrbLibUa library in ANSI-C.
+BrbUaSrvST: Implementation of the server using the BrbLibUa library in StructuredText.
+UaCertsC: Example of runtime management of certificates in ANSI-C.
+UaCertsST: Example of runtime management of certificates in StructuredText.
+AirCondC: Functional implementation for a custom data model example in ANSI-C.
+AirCondST: Functional implementation for a custom data model example in StructuredText.
+PubSub: Exemplary configuration of a PubSub connection.
+Each task also contains a ReadMe.txt file with further details.
+The task 'SrvEvntST' is disabled to prevent the event from being fired by both the ANSI-C and ST tasks.
 
-Um dieses Beispiel zu verstehen, ist es zwingend notwendig, die AS-Hilfe zu studieren. Ausserdem sollte sich der
-Anwender Wissen über Konzepte und die allgemeine Funktionsweise von OpcUa aneignen. B&R bietet hierfür auch Kurse an.
+To fully understand this example, studying the AS help is essential.
+Additionally, the user should acquire knowledge about OPC UA concepts and general functionality.
+B&R also offers courses for this purpose.
 
-Ab AS4.4 kann als Ersatz für den Library-Client der OpcUa_Any-Client verwendet werden, welcher im HW-Baum
-eingefügt wird und nur parametriert statt programmiert werden muss.
+From AS4.4 onwards, the OpcUa_Any client can be used as a replacement for the library client.
+This client is added to the HW tree and only needs to be parameterized instead of programmed.
 
-Ab AS4.9 kann ein Library-Client mit sehr viel weniger Aufwand mithilfe der Bibliothek BrbLibUa implementiert werden.
-Auch hier ist ein Beispiel vorhanden.
-	
-WICHTIG:
-Wird kein jeweils eigenes Zertifikat für Server/Client angelegt, werden beim erstmaligem Starten der SPS
-automatisch Zertifikate erzeugt, welche aber nur einen Gültigkeitszeitraum von 10 Jahren haben.
-Bei einer Verbindung zwischen B&R-Teilnehmern ist das unkritisch, da dann der Gültigkeitszeitraum nicht
-geprüft wird. Bei einer Verbindung zu einem externen Teilnehmer (also nicht B&R) muss ermittelt werden, ob
-dieser den Gültigkeitszeitraum prüft und gegebenenfalls eine Verbindugn zurückweist!
-Ist das der Fall, sollten also unbedingt eigene Zertifikate angelegt und verwendet werden.
-Siehe dazu AS-Hilfe GUID 'f83f9b82-60fe-4f7c-b101-504cb81ffc44' (='Access & Security/TLS/SSL(SSL bei B&R') sowie
-GUID '2c919423-08bb-4895-88b8-afcf6114d0a2' (='Programmierung/Editoren/Konfigurationseditoren/
-Hardwarekonfiguration/CPU Konfiguration/SG4/OPC UA Server').
-In diesem Beispiel wurde jeweils ein Zertifikat für Server und Client unter
-'ConfigurationView/AccessAndSecurity/CertificateStore/OwnCertifcates' mit einer Laufzeit von 50 Jahren 
-angelegt.
-Dazu wurde die Konfiguration 'ConfigurationView/AccessAndSecurity/TransortLayerSecurity/OpcUaCfg.sslcfg' 
-angelegt, in welcher die Einträge konfiguriert sind.
-Die Konfiguration 'SslCfgOpcUaServer' wurde dem Server in der System-Konfiguration zugewiesen.
-Die Konfiguration 'SslCfgOpcUaClient' wird dem Client am FB 'UA_Connect' zugewiesen.
-Siehe dazu auch Package 'UACerts'.
+From AS4.9 onwards, a library client can be implemented with significantly less effort using the BrbLibUa library.
+An example for this is also provided.
+
+IMPORTANT:
+If no specific certificate is created for the server/client, certificates are automatically generated upon the first startup of the PLC.
+These certificates are valid for 10 years.
+For connections between B&R participants, this is not critical, as the validity period is not checked.
+However, for connections to external participants (non-B&R), it must be determined if the validity period is checked. If so, the connection might be rejected!
+In such cases, custom certificates should be created and used.
+
+Refer to AS help GUID 'f83f9b82-60fe-4f7c-b101-504cb81ffc44' (='Access & Security/TLS/SSL (SSL at B&R)') and
+GUID '2c919423-08bb-4895-88b8-afcf6114d0a2' (='Programming/Editors/Configuration Editors/Hardware Configuration/CPU Configuration/SG4/OPC UA Server').
+
+In this example, a certificate for the server and client with a validity of 50 years was created under
+ConfigurationView/AccessAndSecurity/CertificateStore/OwnCertificates.
+
+The configuration ConfigurationView/AccessAndSecurity/TransportLayerSecurity/OpcUaCfg.sslcfg was created, where the entries are configured.
+The SslCfgOpcUaServer configuration was assigned to the server in the system configuration.
+The SslCfgOpcUaClient configuration is assigned to the client at the FB UA_Connect.
+
+See also the package UACerts.
