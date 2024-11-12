@@ -1,0 +1,27 @@
+
+OPCUA_METHOD BedRoomSetOperationMode
+	ARG_INPUT
+		eOperationMode : AirCondOperationMode_ENUM := AirCondIntern_BedRoom.MethSetOperationMode.ArgsIn.eOperationMode;
+	END_ARG
+	ARG_OUTPUT
+		eStatus : AirCondMethodStatus_ENUM := AirCondIntern_BedRoom.MethSetOperationMode.ArgsOut.eStatus;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD CorridorSetOperationMode
+	ARG_INPUT
+		eOperationMode : AirCondOperationMode_ENUM := AirCondIntern_Corridor.MethSetOperationMode.ArgsIn.eOperationMode;
+	END_ARG
+	ARG_OUTPUT
+		eStatus : AirCondMethodStatus_ENUM := AirCondIntern_Corridor.MethSetOperationMode.ArgsOut.eStatus;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD LivingRoomSetOperationMode
+	ARG_INPUT
+		eOperationMode : AirCondOperationMode_ENUM := AirCondIntern_LivingRoom.MethSetOperationMode.ArgsIn.eOperationMode;
+	END_ARG
+	ARG_OUTPUT
+		eStatus : AirCondMethodStatus_ENUM := AirCondIntern_LivingRoom.MethSetOperationMode.ArgsOut.eStatus;
+	END_ARG
+END_OPCUA_METHOD

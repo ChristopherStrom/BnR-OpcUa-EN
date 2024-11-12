@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="ExamplePublisher" Type="uaPubSub">
+    <Property ID="PublisherId" Value="3" />
+    <Property ID="NetworkInterface" Value="IF3" />
+    <Property ID="TransportProfileUri" Value="http://opcfoundation.org/UA-Profile/Transport/pubsub-udp-uadp" />
+    <Group ID="Address">
+      <Property ID="IpAddress" Value="239.1.2.3" />
+      <Property ID="Port" Value="4840" />
+    </Group>
+    <Group ID="WriterGroups">
+      <Group ID="WriterGroup[1]">
+        <Property ID="Name" Value="WriterGroup 500ms" />
+        <Property ID="WriterGroupId" Value="1" />
+        <Property ID="MaxNetworkMessageSize" Value="1400" />
+        <Property ID="PublishingInterval" Value="500" />
+        <Property ID="HeaderLayoutUri" Value="http://opcfoundation.org/UA/PubSub-Layouts/UADP-Periodic-Fixed" />
+        <Group ID="MessageSettingsUadp">
+          <Property ID="GroupVersion" Value="668608188" />
+          <Property ID="DataSetOrdering" Value="1" />
+        </Group>
+        <Group ID="DataSetWriters">
+          <Group ID="DataSetWriter[1]">
+            <Property ID="Name" Value="DataSetWriter Unsigned" />
+            <Property ID="DataSetWriterId" Value="1" />
+            <Group ID="PublishedDataSet">
+              <Property ID="Name" Value="PublishedDataSet Unsigned" />
+              <Group ID="Publish[1]">
+                <Property ID="FieldName" Value="nUsint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{ad74a250-bd62-4e87-ba0d-d2bd769ab52c}" />
+                  <Property ID="IecTypeCode" Value="4" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" />
+                  <Property ID="IecStringLength" Value="0" />
+                </Group>
+                <Property ID="PublishedPv" Value="::ServerData:VarsLocal.ReadOnly.nUsint" />
+              </Group>
+              <Group ID="Publish[2]">
+                <Property ID="FieldName" Value="nUint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{f263c076-1c90-4d66-8e4e-e9b1e2cf6b62}" />
+                  <Property ID="IecTypeCode" Value="5" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" />
+                  <Property ID="IecStringLength" Value="0" />
+                </Group>
+                <Property ID="PublishedPv" Value="::ServerData:VarsLocal.ReadOnly.nUint" />
+              </Group>
+            </Group>
+          </Group>
+          <Group ID="DataSetWriter[2]">
+            <Property ID="Name" Value="DataSetWriter Signed" />
+            <Property ID="DataSetWriterId" Value="2" />
+            <Group ID="PublishedDataSet">
+              <Property ID="Name" Value="PublishedDataSet Signed" />
+              <Group ID="Publish[1]">
+                <Property ID="FieldName" Value="nSint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{bcf86e47-32d9-49b1-816e-e7b43017a6e3}" />
+                  <Property ID="IecTypeCode" Value="1" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" />
+                  <Property ID="IecStringLength" Value="0" />
+                </Group>
+                <Property ID="PublishedPv" Value="::ServerData:VarsLocal.ReadOnly.nSint" />
+              </Group>
+              <Group ID="Publish[2]">
+                <Property ID="FieldName" Value="nInt" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{3331c223-7101-4ba8-aaad-6da664f841b6}" />
+                  <Property ID="IecTypeCode" Value="2" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" />
+                  <Property ID="IecStringLength" Value="0" />
+                </Group>
+                <Property ID="PublishedPv" Value="::ServerData:VarsLocal.ReadOnly.nInt" />
+              </Group>
+            </Group>
+          </Group>
+        </Group>
+      </Group>
+      <Group ID="WriterGroup[2]">
+        <Property ID="Name" Value="WriterGroup 1000ms" />
+        <Property ID="WriterGroupId" Value="2" />
+        <Property ID="MaxNetworkMessageSize" Value="1400" />
+        <Property ID="PublishingInterval" Value="1000" />
+        <Property ID="HeaderLayoutUri" Value="http://opcfoundation.org/UA/PubSub-Layouts/UADP-Periodic-Fixed" />
+        <Group ID="MessageSettingsUadp">
+          <Property ID="GroupVersion" Value="668611114" />
+          <Property ID="DataSetOrdering" Value="1" />
+        </Group>
+        <Group ID="DataSetWriters">
+          <Group ID="DataSetWriter[1]">
+            <Property ID="Name" Value="DataSetWriter Array" />
+            <Property ID="DataSetWriterId" Value="3" />
+            <Group ID="PublishedDataSet">
+              <Property ID="Name" Value="PublishedDataSet Array" />
+              <Group ID="Publish[1]">
+                <Property ID="FieldName" Value="anInt" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{ad21bbba-311c-4c33-9ff5-103d2fd11bf2}" />
+                  <Property ID="IecTypeCode" Value="2" />
+                  <Property ID="ValueRank" Value="1" />
+                  <Property ID="ArrayDimensions" Value="5" />
+                  <Property ID="IecStringLength" Value="0" />
+                </Group>
+                <Property ID="PublishedPv" Value="::ServerData:VarsLocal.ReadOnly.anInt" />
+              </Group>
+            </Group>
+          </Group>
+        </Group>
+      </Group>
+    </Group>
+  </Element>
+  <Element ID="ExampleSubscriber" Type="uaPubSub">
+    <Property ID="PublisherId" Value="3" />
+    <Property ID="NetworkInterface" Value="IF3" />
+    <Property ID="TransportProfileUri" Value="http://opcfoundation.org/UA-Profile/Transport/pubsub-udp-uadp" />
+    <Group ID="Address">
+      <Property ID="IpAddress" Value="239.1.2.3" />
+      <Property ID="Port" Value="4840" />
+    </Group>
+    <Group ID="ReaderGroups">
+      <Group ID="ReaderGroup[1]">
+        <Property ID="Name" Value="ReaderGroup 500ms" />
+        <Property ID="MaxNetworkMessageSize" Value="1400" />
+        <Group ID="DataSetReaders">
+          <Group ID="DataSetReader[1]">
+            <Property ID="Name" Value="DataSetReader Unsigned" />
+            <Property ID="PublisherId" Value="3" />
+            <Property ID="WriterGroupId" Value="1" />
+            <Property ID="DataSetWriterId" Value="1" />
+            <Property ID="MessageReceiveTimeout" Value="2000" />
+            <Group ID="MessageSettingsUadp">
+              <Property ID="GroupVersion" Value="668608188" />
+              <Property ID="NetworkMessageNumber" Value="1" />
+              <Property ID="DataSetOffset" Value="15" />
+            </Group>
+            <Group ID="TargetVariables">
+              <Property ID="Name" Value="ExamplePublisher-WriterGroup 500ms-DataSetWriter Unsigned" />
+              <Group ID="Subscription[1]">
+                <Property ID="Source" Value="nUsint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{ad74a250-bd62-4e87-ba0d-d2bd769ab52c}" />
+                  <Property ID="BuiltInType" Value="3" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" Value="" />
+                  <Property ID="MaxStringLength" Value="0" />
+                </Group>
+                <Property ID="Target" Value="::Subscriber:SubscribedData.nUsint" />
+              </Group>
+              <Group ID="Subscription[2]">
+                <Property ID="Source" Value="nUint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{f263c076-1c90-4d66-8e4e-e9b1e2cf6b62}" />
+                  <Property ID="BuiltInType" Value="5" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" Value="" />
+                  <Property ID="MaxStringLength" Value="0" />
+                </Group>
+                <Property ID="Target" Value="::Subscriber:SubscribedData.nUint" />
+              </Group>
+            </Group>
+          </Group>
+          <Group ID="DataSetReader[2]">
+            <Property ID="Name" Value="DataSetReader Signed" />
+            <Property ID="PublisherId" Value="3" />
+            <Property ID="WriterGroupId" Value="1" />
+            <Property ID="DataSetWriterId" Value="2" />
+            <Property ID="MessageReceiveTimeout" Value="2000" />
+            <Group ID="MessageSettingsUadp">
+              <Property ID="GroupVersion" Value="668608188" />
+              <Property ID="NetworkMessageNumber" Value="1" />
+              <Property ID="DataSetOffset" Value="23" />
+            </Group>
+            <Group ID="TargetVariables">
+              <Property ID="Name" Value="ExamplePublisher-WriterGroup 500ms-DataSetWriter Signed" />
+              <Group ID="Subscription[1]">
+                <Property ID="Source" Value="nSint" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{bcf86e47-32d9-49b1-816e-e7b43017a6e3}" />
+                  <Property ID="BuiltInType" Value="2" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" Value="" />
+                  <Property ID="MaxStringLength" Value="0" />
+                </Group>
+                <Property ID="Target" Value="::Subscriber:SubscribedData.nSint" />
+              </Group>
+              <Group ID="Subscription[2]">
+                <Property ID="Source" Value="nInt" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{3331c223-7101-4ba8-aaad-6da664f841b6}" />
+                  <Property ID="BuiltInType" Value="4" />
+                  <Property ID="ValueRank" Value="-1" />
+                  <Property ID="ArrayDimensions" Value="" />
+                  <Property ID="MaxStringLength" Value="0" />
+                </Group>
+                <Property ID="Target" Value="::Subscriber:SubscribedData.nInt" />
+              </Group>
+            </Group>
+          </Group>
+        </Group>
+      </Group>
+      <Group ID="ReaderGroup[2]">
+        <Property ID="Name" Value="ReaderGroup 1000ms" />
+        <Property ID="MaxNetworkMessageSize" Value="1400" />
+        <Group ID="DataSetReaders">
+          <Group ID="DataSetReader[1]">
+            <Property ID="Name" Value="DataSetReader Array" />
+            <Property ID="PublisherId" Value="3" />
+            <Property ID="WriterGroupId" Value="2" />
+            <Property ID="DataSetWriterId" Value="3" />
+            <Property ID="MessageReceiveTimeout" Value="4000" />
+            <Group ID="MessageSettingsUadp">
+              <Property ID="GroupVersion" Value="668611114" />
+              <Property ID="NetworkMessageNumber" Value="1" />
+              <Property ID="DataSetOffset" Value="15" />
+            </Group>
+            <Group ID="TargetVariables">
+              <Property ID="Name" Value="ExamplePublisher-WriterGroup 1000ms-DataSetWriter Array" />
+              <Group ID="Subscription[1]">
+                <Property ID="Source" Value="anInt" />
+                <Group ID="FieldMetaData">
+                  <Property ID="DataSetFieldId" Value="{ad21bbba-311c-4c33-9ff5-103d2fd11bf2}" />
+                  <Property ID="BuiltInType" Value="4" />
+                  <Property ID="ValueRank" Value="1" />
+                  <Property ID="ArrayDimensions" Value="5" />
+                  <Property ID="MaxStringLength" Value="0" />
+                </Group>
+                <Property ID="Target" Value="::Subscriber:SubscribedData.anInt" />
+              </Group>
+            </Group>
+          </Group>
+        </Group>
+      </Group>
+    </Group>
+  </Element>
+</Configuration>

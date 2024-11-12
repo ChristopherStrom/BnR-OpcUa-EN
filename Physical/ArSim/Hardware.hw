@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.10.4.38 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="OpcUa_any" Type="OpcUa_any" Version="1.0.0.1">
+    <Connection Connector="ETH1" TargetModule="PC" TargetConnector="IF3">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="ServerDiagnostics" Value="on" />
+    <Parameter ID="ServerEndpointUrl" Value="opc.tcp://127.0.0.1:4840" />
+    <Parameter ID="PnPTimeout" Value="20000" />
+    <Parameter ID="PnPInitTimeout" Value="20" />
+    <Parameter ID="OpcUa_Security_SoftwareCertificates" Value="SslCfgOpcUaClient" />
+    <Parameter ID="UserIdentifyToken" Value="1" />
+    <Parameter ID="Username" Value="Admin" />
+    <Parameter ID="Password" Value="admin" />
+    <Group ID="Channel1" />
+    <Parameter ID="ChannelID1" Value="Read_Usint" />
+    <Parameter ID="ChannelBrowsePath1" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Read/7:Server/7:nUsint" />
+    <Parameter ID="ChannelSamplingInterval1" Value="500" />
+    <Parameter ID="ChannelPublishingInterval1" Value="500" />
+    <Parameter ID="ChannelType1" Value="USINT" />
+    <Group ID="Channel2" />
+    <Parameter ID="ChannelID2" Value="Read_Uint" />
+    <Parameter ID="ChannelBrowsePath2" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Read/7:Server/7:nUint" />
+    <Parameter ID="ChannelSamplingInterval2" Value="500" />
+    <Parameter ID="ChannelPublishingInterval2" Value="500" />
+    <Parameter ID="ChannelType2" Value="UINT" />
+    <Group ID="Channel3" />
+    <Parameter ID="ChannelID3" Value="Read_Udint" />
+    <Parameter ID="ChannelBrowsePath3" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Read/7:Server/7:nUdint" />
+    <Parameter ID="ChannelSamplingInterval3" Value="500" />
+    <Parameter ID="ChannelPublishingInterval3" Value="500" />
+    <Parameter ID="ChannelType3" Value="UDINT" />
+    <Group ID="Channel4" />
+    <Parameter ID="ChannelID4" Value="Write_Usint" />
+    <Parameter ID="ChannelBrowsePath4" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Write/7:Server/7:nUsint" />
+    <Parameter ID="ChannelDirection4" Value="OUT" />
+    <Parameter ID="ChannelSamplingInterval4" Value="500" />
+    <Parameter ID="ChannelType4" Value="USINT" />
+    <Group ID="Channel5" />
+    <Parameter ID="ChannelID5" Value="Write_Uint" />
+    <Parameter ID="ChannelBrowsePath5" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Write/7:Server/7:nUint" />
+    <Parameter ID="ChannelDirection5" Value="OUT" />
+    <Parameter ID="ChannelSamplingInterval5" Value="500" />
+    <Parameter ID="ChannelType5" Value="UINT" />
+    <Group ID="Channel6" />
+    <Parameter ID="ChannelID6" Value="Write_Udint" />
+    <Parameter ID="ChannelBrowsePath6" Value="/0:Root/0:Objects/4:PLC/4:Modules/7:&amp;:&amp;:/7:OpcUaAny/7:Data/7:Write/7:Server/7:nUdint" />
+    <Parameter ID="ChannelDirection6" Value="OUT" />
+    <Parameter ID="ChannelSamplingInterval6" Value="500" />
+    <Parameter ID="ChannelType6" Value="UDINT" />
+  </Module>
+  <Module Name="PC" Type="PC_any" Version="1.1.1.0" OrderNumber="PC">
+    <Parameter ID="ConfigurationID" Value="OpcUaSample49_ArSim" />
+    <Parameter ID="Cyclic1Duration" Value="10000" />
+    <Parameter ID="Cyclic2Duration" Value="20000" />
+    <Parameter ID="Cyclic3Duration" Value="50000" />
+    <Parameter ID="Cyclic4Duration" Value="100000" />
+    <Parameter ID="Cyclic5Duration" Value="200000" />
+    <Parameter ID="Cyclic6Duration" Value="300000" />
+    <Parameter ID="Cyclic7Duration" Value="500000" />
+    <Parameter ID="Cyclic8Duration" Value="10000" />
+    <Parameter ID="ActivateOpcUa" Value="1" />
+    <Parameter ID="OpcUaAnonymous" Value="1" />
+    <Parameter ID="OpcUaUserName" Value="Admin" />
+    <Parameter ID="OpcUaPassword" Value="admin" Description="admin" />
+    <Parameter ID="OpcUa_Security_AdminRole" Value="Administrators" />
+    <Parameter ID="OpcUa_Security_SoftwareCertificates" Value="SslCfgOpcUaServer" />
+    <Parameter ID="OpcUaInformationModels_PV_Version" Value="2" />
+  </Module>
+</Hardware>

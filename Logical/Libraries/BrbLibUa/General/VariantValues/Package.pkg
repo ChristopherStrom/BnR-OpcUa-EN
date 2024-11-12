@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbUaClearVariantValue.c</Object>
+    <Object Type="File" Description="Wandelt einen OpcUa-Value in einen Text">BrbUaConvVariantValueFromString.c</Object>
+    <Object Type="File" Description="Wandelt einen Text in einen OpcUa-Value">BrbUaConvVariantValueToString.c</Object>
+    <Object Type="File" Description="Hängt den Element-Namen eines OpcUa-Values anhand des Datentypen an einen Text an">BrbUaAddVariantValueSubName.c</Object>
+  </Objects>
+</Package>

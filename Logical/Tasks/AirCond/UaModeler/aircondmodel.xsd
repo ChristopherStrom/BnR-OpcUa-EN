@@ -1,0 +1,33 @@
+<xs:schema elementFormDefault="qualified" targetNamespace="http://br-automation.com/AirCondModel/Types.xsd" xmlns:tns="http://br-automation.com/AirCondModel/Types.xsd" xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd"/>
+    <xs:simpleType name="AirConditionMethodStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Ok_0"/>
+            <xs:enumeration value="InvalidOperationMode_1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element type="tns:AirConditionMethodStatusType" name="AirConditionMethodStatusType"/>
+    <xs:complexType name="ListOfAirConditionMethodStatusType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:AirConditionMethodStatusType" name="AirConditionMethodStatusType" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfAirConditionMethodStatusType" name="ListOfAirConditionMethodStatusType" nillable="true"/>
+    <xs:simpleType name="AirConditionOperationModeType">
+        <xs:annotation>
+            <xs:documentation>Operation mode of an air condition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Off_0"/>
+            <xs:enumeration value="Manual_1"/>
+            <xs:enumeration value="Automatic_2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element type="tns:AirConditionOperationModeType" name="AirConditionOperationModeType"/>
+    <xs:complexType name="ListOfAirConditionOperationModeType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" type="tns:AirConditionOperationModeType" name="AirConditionOperationModeType" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element type="tns:ListOfAirConditionOperationModeType" name="ListOfAirConditionOperationModeType" nillable="true"/>
+</xs:schema>

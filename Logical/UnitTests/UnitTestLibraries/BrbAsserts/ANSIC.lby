@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Include this file in programs using any of the asserts provided by this library">BrbAsserts.h</File>
+    <File>EqualBool.h</File>
+    <File>EqualBool.c</File>
+    <File>EqualDint.h</File>
+    <File>EqualDint.c</File>
+    <File>EqualUdint.h</File>
+    <File>EqualUdint.c</File>
+    <File>EqualDtStruct.h</File>
+    <File>EqualDtStruct.c</File>
+    <File>WithinUdint.h</File>
+    <File>WithinUdint.c</File>
+    <File>WithinDint.h</File>
+    <File>WithinDint.c</File>
+    <File>MemContent.h</File>
+    <File>MemContent.c</File>
+    <File>StringEndContent.h</File>
+    <File>StringEndContent.c</File>
+  </Files>
+</Library>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package">Status</Object>
+    <Object Type="Package" Description="Funktionen für OpcUa-Knoten">Nodes</Object>
+    <Object Type="Package">Attributes</Object>
+    <Object Type="Package" Description="Funktionen für OpcUa-Werte">VariantValues</Object>
+    <Object Type="Package" Description="Funktionen für OpcUa-Ereignisse">ByteStrings</Object>
+    <Object Type="Package">Images</Object>
+    <Object Type="Package">LocalizedTexts</Object>
+    <Object Type="Package">QualifiedNames</Object>
+    <Object Type="Package">TimeAndDate</Object>
+    <Object Type="Package">Additional</Object>
+  </Objects>
+</Package>

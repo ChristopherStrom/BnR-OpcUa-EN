@@ -1,0 +1,14 @@
+VAR
+	nUint64 : BrbUint64_TYP;
+	sUint64 : STRING[nBRB_UINT64_CHAR_MAX];
+	pUint64 : REFERENCE TO BrbUint64_TYP;
+	pUint64CountMin : REFERENCE TO BrbUint64_TYP;
+	pUint64CountMax : REFERENCE TO BrbUint64_TYP;
+	ChangeUint64Inst : ChangeUint64ST_TYP;
+	nInt64 : BrbInt64_TYP;
+	sInt64 : STRING[nBRB_INT64_CHAR_MAX];
+	pInt64 : REFERENCE TO BrbInt64_TYP;
+	pInt64CountMin : REFERENCE TO BrbInt64_TYP;
+	pInt64CountMax : REFERENCE TO BrbInt64_TYP;
+	ChangeInt64Inst : ChangeInt64ST_TYP;
+END_VAR

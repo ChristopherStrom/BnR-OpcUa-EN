@@ -1,0 +1,88 @@
+
+OPCUA_METHOD OwnGetCertificateList
+	ARG_OUTPUT
+		CertificatesList : OpcUaCertList_TYP := Opc.OwnGetCertificateList.Out_CertificatesList;
+		ErrorId : Int32 := Opc.OwnGetCertificateList.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD OwnGenerate
+	ARG_INPUT
+		Parameter : OwnGenerateCertificatePar_TYP := Opc.OwnGenerate.In_Parameter;
+	END_ARG
+	ARG_OUTPUT
+		ErrorId : Int32 := Opc.OwnGenerate.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD OwnImport
+	ARG_INPUT
+		Name : String := Opc.OwnImport.In_Name;
+		Certificate : UAByteString5k_TYP := Opc.OwnImport.In_Certificate;
+		PrivateKeyName : String := Opc.OwnImport.In_PrivateKeyName;
+		PrivateKey : UAByteString5k_TYP := Opc.OwnImport.In_PrivateKey;
+		Overwrite : Boolean := Opc.OwnImport.In_Overwrite;
+	END_ARG
+	ARG_OUTPUT
+		ErrorId : Int32 := Opc.OwnImport.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD OwnDelete
+	ARG_INPUT
+		Name : String := Opc.OwnDelete.In_Name;
+		PrivateKeyName : String := Opc.OwnDelete.In_PrivateKeyName;
+		SuppressNotExistsError : Boolean := Opc.OwnDelete.In_SuppressNotExistsError;
+	END_ARG
+	ARG_OUTPUT
+		ErrorId : Int32 := Opc.OwnDelete.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD ForeignGetCertificateList
+	ARG_OUTPUT
+		CertificatesList : OpcUaCertList_TYP := Opc.ForeignGetCertificateList.Out_CertificatesList;
+		ErrorId : Int32 := Opc.ForeignGetCertificateList.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD ForeignImport
+	ARG_INPUT
+		Name : String := Opc.ForeignImport.In_Name;
+		Certificate : UAByteString5k_TYP := Opc.ForeignImport.In_Certificate;
+		Overwrite : Boolean := Opc.ForeignImport.In_Overwrite;
+	END_ARG
+	ARG_OUTPUT
+		ErrorId : Int32 := Opc.ForeignImport.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD ForeignDelete
+	ARG_INPUT
+		Name : String := Opc.ForeignDelete.In_Name;
+		SuppressNotExistsError : Boolean := Opc.ForeignDelete.In_SuppressNotExistsError;
+	END_ARG
+	ARG_OUTPUT
+		ErrorId : Int32 := Opc.ForeignDelete.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD SslGetCfgList
+	ARG_OUTPUT
+		CfgList : OpcUaSslCfgList_TYP := Opc.SslGetCfgList.Out_CfgList;
+		ErrorId : Int32 := Opc.SslGetCfgList.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD SslGetTrustedCertList
+	ARG_INPUT
+		CfgName : String := Opc.SslGetTrustedCertList.In_CfgName;
+	END_ARG
+	ARG_OUTPUT
+		TrustedCertNameList : OpcUaCertNameList_TYP := Opc.SslGetTrustedCertList.Out_TrustedCertNameList;
+		ErrorId : Int32 := Opc.SslGetTrustedCertList.Out_ErrorId;
+	END_ARG
+END_OPCUA_METHOD
+
+OPCUA_METHOD Warmstart
+END_OPCUA_METHOD

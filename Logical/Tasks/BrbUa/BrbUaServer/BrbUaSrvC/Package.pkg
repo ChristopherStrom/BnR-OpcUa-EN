@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="DataObject" Language="Simple" Description="Konfiguration des BrbUa-Servers für ANSI_C">BrbSrvDatC</Object>
+    <Object Type="Program" Language="ANSIC" Description="Server-Implementierung mit BrbLibUa in ANSI-C">BrbUaSrvC</Object>
+  </Objects>
+</Package>

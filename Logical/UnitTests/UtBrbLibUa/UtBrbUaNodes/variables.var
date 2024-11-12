@@ -1,0 +1,28 @@
+(********************************************************************
+ * COPYRIGHT --  
+ ********************************************************************
+ * Program: utTemplate_automated
+ * File: variables.var
+ * Author: -
+ * Created: - 
+ ********************************************************************
+ * Local variables of program utTemplate_automated
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='BrbUaNodes',Description:='(Optional field)Template for use with helper tool. Reference or add this program in the package "TS_UnitTest_UpdateTestPrograms"',Type:=utMgrTEST_TYPE_C,MetaInformation:='(Optional field):To be filled');
+END_VAR
+(*Input variables for testing*)
+VAR
+	nodeIdIn0 : UANodeID;
+	nodeIdIn1 : UANodeID;
+	stringIn0 : STRING[256] := '';
+	uintIn0 : UINT;
+	udintIn0 : UDINT;
+END_VAR
+(*Functionblock instances for testing*)
+(*Output variables for testing*)
+VAR
+	dwordOut : DWORD;
+	boolOut : BOOL;
+END_VAR

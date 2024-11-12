@@ -1,0 +1,3 @@
+VAR
+	PublisherDiagData : PubSubDiagData_TYP;
+END_VAR

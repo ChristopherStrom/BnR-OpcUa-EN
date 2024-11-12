@@ -1,0 +1,6 @@
+VAR
+	Step : Step_TYP;
+	fbUaSrv_MethodOperateCalculate : UaSrv_MethodOperate;
+	MethCalculateArgs : MethCalculateArgs_TYP;
+	nMethCalculateCallCount : UDINT;
+END_VAR

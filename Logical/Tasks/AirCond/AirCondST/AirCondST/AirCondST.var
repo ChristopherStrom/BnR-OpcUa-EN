@@ -1,0 +1,16 @@
+VAR
+	AirCond_BedRoom : AirCond_TYP;
+	AirCondIntern_BedRoom : AirCondIntern_TYP;
+	AirCond_Corridor : AirCond_TYP;
+	AirCondIntern_Corridor : AirCondIntern_TYP;
+	AirCond_LivingRoom : AirCond_TYP;
+	AirCondIntern_LivingRoom : AirCondIntern_TYP;
+	pInstance : REFERENCE TO AirCond_TYP;
+	pIntern : REFERENCE TO AirCondIntern_TYP;
+	sMessageText : STRING[512];
+	eOperationMode : AirCondOperationMode_ENUM;
+	sOperationModeText : STRING[512];
+	nFieldIndex : UINT;
+	sFieldNameTotal : STRING[128];
+	sVarNameTotal : STRING[256];
+END_VAR

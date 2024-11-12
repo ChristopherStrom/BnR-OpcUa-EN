@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testconfiguration>
+<tests />
+<config-def id="AS_Test_Configuration">
+<test timeout="60" name="BrbUaTemplate" />
+<test timeout="60" name="BrbUaStatus" />
+<test timeout="60" name="BrbUaNodes" />
+<test timeout="60" name="BrbUaAttributes" />
+<test timeout="60" name="BrbUaVariantValues" />
+<test timeout="60" name="BrbUaByteStrings" />
+<test timeout="60" name="BrbUaLocalizedTexts" />
+<test timeout="60" name="BrbUaQualifiedNames" />
+<test timeout="60" name="BrbUaTimeAndDate" />
+<test timeout="60" name="BrbUaAdditional" />
+<test timeout="60" name="BrbUaClient" />
+<test timeout="60" name="BrbUaServer" /></config-def>
+<settings id="AS_Test_Setting" timeout="60" communication-protocol="http" port="80" host="http://127.0.0.1" />
+<run StartTestsAfterTransfer="false" setting="AS_Test_Setting" configuration="AS_Test_Configuration" />
+</testconfiguration>

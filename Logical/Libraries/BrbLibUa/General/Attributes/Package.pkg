@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Gibt den OpcUa-Datentyp für ein Attribut zurück">BrbUaGetAttributeIdDatatype.c</Object>
+    <Object Type="File">BrbUaGetAttributeList.c</Object>
+    <Object Type="File" Description="Gibt den Text eines boolschen Werts zurück">BrbUaAddBooleanText.c</Object>
+    <Object Type="File" Description="Gibt den Text einer NodeClass zurück">BrbUaAddNodeClassText.c</Object>
+    <Object Type="File" Description="Gibt den Text zu einem Datentyp-Identifier zurück">BrbUaAddDatatypeIdText.c</Object>
+    <Object Type="File" Description="Gibt den Text für eine ArrayDimension zurück">BrbUaAddArrayDimensionText.c</Object>
+    <Object Type="File" Description="Gibt den Text eines AccessLevels zurück">BrbUaAddAccessLevelText.c</Object>
+    <Object Type="File" Description="Gibt den Text eines EventNotifiers zurück">BrbUaAddEventNotifierText.c</Object>
+  </Objects>
+</Package>

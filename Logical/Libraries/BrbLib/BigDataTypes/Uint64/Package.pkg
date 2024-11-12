@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbUint64FromString.c</Object>
+    <Object Type="File">BrbUint64ToString.c</Object>
+    <Object Type="File">BrbUint64Compare.c</Object>
+    <Object Type="File">BrbUint64Inc.c</Object>
+    <Object Type="File">BrbUint64Dec.c</Object>
+    <Object Type="File">BrbUint64Calculate.c</Object>
+  </Objects>
+</Package>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package" Description="Muster für einen Task">Template</Object>
+    <Object Type="Package" Description="Daten für den eigenen OpcUa-Server">ServerData</Object>
+    <Object Type="Package" Description="Behandlung von 64-Bit-Datentypen">ServerDt64</Object>
+    <Object Type="Package" Description="Methoden-Aufruf im Server">ServerMethods</Object>
+    <Object Type="Package" Description="Event-Aufruf im Server">ServerEvents</Object>
+    <Object Type="Package" Description="Clients in verschiedenen Sprachen">Clients</Object>
+    <Object Type="Package" Description="Variablen für OpcUaAny-Client">OpcUaAny</Object>
+    <Object Type="Package" Description="Verwendung der Bibliothek BrbLibUa">BrbUa</Object>
+    <Object Type="Package" Description="Verwaltung von Zertifikaten">UaCerts</Object>
+    <Object Type="Package" Description="Klima-Anlagen: Eigenes Daten-Modell">AirCond</Object>
+    <Object Type="Package">PubSub</Object>
+  </Objects>
+</Package>

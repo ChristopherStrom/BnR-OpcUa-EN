@@ -1,0 +1,175 @@
+Revisionsgeschichte
+
+2018-08-24	AS4.1
+	Server:
+		Task 'ServerData':
+			-Bereitstellen von teilweisen sich ändernden Variablen über den OpcUa-Server
+			-Bereistellen von Variablen, auf die die Clients schreiben können
+	Client:
+		Task 'ClientC' und 'ClientST':
+			-Aufbauen einer Verbindung
+			-Ermitteln des NamespaceIndex
+			-Erzeugen von 3 Subscriptions mit MonitoredItems
+			-Zyklisches Lesen einer Variablen-Liste
+			-Zyklisches Schreiben einer Variablen-Liste
+			-Ermitteln und Auswerten des ConnectiosStatus
+			-Abbauen der Verbindung im Exit
+
+2018-08-24	AS4.2
+	Allgemein:
+		-Verwendung des Rollen/Benutzer-Systems für OpcUa
+		-Verwendung eines eigenen Zertifikats (Laufzeit 99 Jahre) für Server und Client
+	Client:
+		Task 'ClientC' und 'ClientST':
+			-Hinzufügen der MonitoredItems über 'UA_MonitoredItemAddList' statt 'UA_MonitoredItemAdd'
+
+2018-08-24	AS4.3
+	Server:
+		Task 'SrvMethC' und 'SrvMethST'
+			-Implementierung der Methode 'Calculate'
+	Client:
+		Task 'ClientC' und 'ClientST':
+			-Zyklischer Aufruf der Methode 'Calculate'
+
+2018-08-24	AS4.4
+	OpcUaAny:
+		-Implementierung des HW-Clients, welcher nicht programmiert, sondern nur parametriert werden muss.
+
+2018-11-19	AS4.1, AS4.2, AS4.3, AS4.4
+	Client:
+		Task 'ClientC' und 'ClientST':
+			Das Releasen der Node-Handles, welche für die Subscription benötigt werden,
+			wurde aus der Schrittkette entfernt.
+			Hintergrund: Wurde die Verbindung unterbrochen und wieder hergestellt, so wurden
+			die empfangenen Werte nicht mehr auf die gemappten Variablen geschrieben.
+			Grundsätzlich sollten Handles nicht gelöscht werden, solange die Funktion
+			benötigt wird, für die sie ermittelt wurden.
+
+2018-11-21	AS4.4.6.71
+	Server
+		Task 'SrvMethC' und 'SrvMethST':
+			Das ursprüngliche Projekt 'OpcUaSample44' ist aufgrund eines Fehlers in AS4.4.6.71
+			nicht kompilierbar (Fehlernummer 5091), sondern nur mit AS4.4.5.61. Dehalb wurde ein
+			eigenes Beispiel-Projekt 'OpcUaSample44_671' erzeugt, welches diesen Fehler umgeht.
+			Hintergrund: Auf Methoden-Argumente gemappte Variablen dürfen sich in dieser Version
+			nur maximal auf der 1. Ebene einer Struktur befinden, aber nicht wie im Original auf
+			der 2. oder einer höheren Ebene.
+			Der Fehler im AS wird schnellstmöglich (wahrscheinlich durch ein neues Upgrade)
+			behoben werden.
+
+2019-06-07	AS4.4.7.144
+	Server
+		Task 'SrvMethC' und 'SrvMethST':
+			Der Fehler aus AS4.4.6.71 (siehe oben) wurde in dieser Version behoben. Daher wurde
+			wieder auf das ursprüngliche Projekt 'OpcUaSample44' gewechselt und unter
+			'OpcUaSample44_7144' abgespeichert.
+
+2019-01-09	AS4.5
+	Selbe Version wie AS4.4
+		Der Fehler von '2018-11-21	AS4.4.6.71' wurde im AS behoben. Nun können auch wieder Variablen
+		auf Methoden-Argumente gemappt werden, welche sich auf einer höheren Struktur-Ebene als 1 befinden.
+	Überarbeitung einiger 'ReadMe.txt'-Dateien.
+	
+2019-07-05	AS4.6
+	Server
+		Task 'ServerData':
+			Beispiele für dynamische Arrays implementiert: ByteStringExample, ByteStringExample20 und DynamicStructArray.
+		Tasks 'SrvEvntC' und 'SrvEvntST':
+			Beispiel zum anwenderseitigen Feuern eines Events.
+		Textsystem: Sprachübersetzung des Attributs 'Description' bei den Knoten 'gVarsGlobal' und 'VarsLocal'.
+	Client:
+		Task 'ClientC' und 'ClientST':
+			Es wurde eine Subscription implementiert, welche das Empfangen der vom Server gefeuerten Events zeigt.		
+	UaCerts:
+		Tasks 'UaCertsC' und 'UaCertsST':
+			Hier wird demonstriert, wie OpcUa-Zertifikate zur Laufzeit verwaltet werden können.
+	
+2019-07-22	AS4.6 (Eigenes Daten-Modell)
+	Server
+		Task 'AirCond':
+			Implementierung von 3 Klima-Anlagen-Instanzen, welche über ein eigenes Modell veröffentlicht werden.
+			Die Modellierung wurde komplett im externen Tool UaModeler vorgenommen.
+	
+2019-09-20	AS4.7
+	AirCond (eigenes Modell):
+		Es wurde ein komplett neues eigenes Modell modelliert. Die Strukturierung der Daten wurde beibehalten,
+		nur deren Parametrierung wurde geändert.
+		Ausserdem wurden die Vorwärts-Referenzen im externen Modell nicht mehr eingefügt. Das Mapping geschieht jetzt
+		durch	Rückwärts-Referenzen, welche im AS gesetzt werden.
+		Weil die Vorwärts-Referenzen auf das B&R-Modell nicht mehr nötig sind, brauchte auch das B&R-Modell nicht
+		mehr ins Ua-Modeler-Projekt des eigenen Modells rückimportiert werden.
+		Zusätzlich wurde ein Event 'AirConditionOperationModeChanged' implementiert. Es ist beim Knoten 'Server' und
+		am Knoten der jeweiligen Instanz abgreifbar und wird immer gefeuert, wenn sich der Betriebs-Modus ändert.
+	OpcUaAny:
+		Durch die Verwendung eines externen Modells verschiebt sich der Namespace-Index des B&R-Modells von 6
+		auf 7. Dies musste also auch in den Browse-Pfaden der OpcUaAny-Konfiguration geändert werden.
+		Bei allen anderen Tasks muss nichts geändert werden, da sich diese den Namespace-Index auf das B&R-Modell
+		vom Server holen.
+		Leider tritt ab As4.7 + A4.73 sporadisch ein Reboot der ArSim auf, wenn im HW-Baum das Gerät 'OpcUa_any'
+		aktiviert ist. Dieser Fehler ist leider noch nicht identifiziert. Daher ist das Gerät in dieser Version
+		deaktiviert. Wer an dem Beispiel interessiert ist, kann das Gerät aktivieren (der Fehler tritt nicht immer
+		auf). Sollte dies nicht funktionieren, kann auch mit einem älteren Beispiel gearbeitet werden, z.B. OpcUaSample46. 
+	ServerData:
+		Das Beispiel für dynamische Arrays wurde komplett überarbeitet. Die bisherigen Beispiele wurden eliminiert und
+		dafür neue implementiert, um den Unterschied zwischen 'UAArrayLength' und 'UANoOfElements' besser zu
+		demonstrieren.
+		Außerdem wurde die Variable 'nWritableAttributes' implementiert, um die Funktionalität 'Schreibbare Attribute'
+		zu zeigen.
+		
+Hinweis zu AS4.8
+	Es gibt kein Sample48, da in dieser Version keine nennenswerten neuen Funktionalitäten hinzugekommen sind.
+	Es wurden nur Fehler- und Performance-Optimierungen im AS und AR gemacht.
+		
+2021-03-25	AS4.9
+	Erweiterung um ein Publisher/Subscriber-Beispiel.
+		Es wurde sowohl ein Publisher als auch Subscriber konfiguriert, welche zusammen passen. Auch die programmseitige
+		Diagnose mittels Zähler wird demonstriert.
+	Fehler in FireEvent (Task 'SrvEvent')
+		Leider hat sich in der verwendeten Betriebssystem-Version A4.90 ein Fehler eingesschlichen. Wird am Field 'Context'
+		eine Struktur-Variable angebunden, deren Struktur-Definition global angelegt ist (wie es legitim ist und normalerweise 
+		in diesem Beispiel gezeigt wird), so liefert der FB den Fehler 0x803D0000 = 'Bad_NotSupported' zurück, statt das Event zu
+		feuern. Daher ist für diese Version	lediglich ein REAL angebunden. Sobald der Fehler in einer der nächsten Versionen 
+		behoben ist, wird das Beispiel wieder eine Struktur anbinden.
+		
+2021-09-14	As4.9 (BrbLibUa)
+	Umstellung von AR A4.90 auf E4.90.
+	Fehler in FireEvent (Task 'SrvEvent') ist behoben.
+		Der oben beschriebene Fehler zum Field 'Context' (globale Definition der Struktur) wurde in E4.90 behoben. Daher wird hier
+		auch wieder die Struktur angebunden (siehe ServerEvents\ReadMe.txt).
+	Erweiterung um Bibliothek 'BrbLibUa' und deren Beispiele.
+		Hier wird gezeigt, wie mithilfe dieser Bibliothek viele Funktionalitäten von Server und Client implementiert werden
+		können. Im Gegensatz zur herkömmlichen Programmierung ist dann sehr viel weniger Aufwand nötig.
+	Eliminierung der Hilfs-Bibliothek 'Util'
+		Da alle benötigten Funktionen dieser Hilfs-Bibliothek in der Bibliothek 'BrbLib' vorhanden sind und diese sowieso
+		für die 'BrbLibUa' gebraucht wird, wurde 'Util' entfernt. 
+		
+2022-05-13	As4.10  (BrbLibUa V1.01)
+	Umstellung von AR E4.90 auf D4.91.
+	BrbLibUa V1.01 (genaueres zu Erweiterungen/Korrekturen siehe Dokumentation der Bibliothek)
+	Task 'BrbUaClt': Die neue Funktion BrbUaGetSrvTimeText() wird beispielhaft verwendet.
+
+2022-06-07	As4.10 (BrbLibUa V1.02)
+	BrbLibUa V1.02 (genaueres zu Erweiterungen/Korrekturen siehe Dokumentation der Bibliothek).
+	Implementierung der UnitTests für BrbLibUa.
+	Die Compiler-Version wurde von V4.1.2 auf 6.3.0 geändert.
+	Die Abhängigkeit von der Basis-Bibliothek 'BrbLib' wurde von V5.01 auf V5.02 geändert.
+	Prüfung mit dem Code-Analyse-Tool 'ClangTidy'. Dies führt zu einer erhöhten SW-Qualität.
+	Server
+		Task 'SrvDt64C' und 'SrvDt64ST':
+			Implementierung von 64-Bit-Datentypen wie Uint64 (ULINT) und Int64 (LINT).
+	Client
+		Task 'BrbUaClient': Abonnieren der Server-Info- und Server-Diagnose-Daten beispielhaft implementiert.
+
+2024-02-22	As4.10 (BrbLibUa V1.03)
+	Umstellung von AR E4.91 auf H4.91.
+	Die Bibliothek BrbLib wurde von V5.02 auf V5.03 upgedatet (genaueres zu Erweiterungen/Korrekturen siehe Dokumentation der Bibliothek).
+	BrbLibUa V1.03:
+		Die Abhängigkeit zur Bibliothek 'BrbLib' wurde von V5.02 auf V50.3 erhöht.
+		Es wurden Hinweise in die Hilfe aufgenommen. 
+		Die Bibliothek selbst hat sich nicht geändert.
+	Prüfung mit neuer Version des Code-Analyse-Tools 'ClangTidy'. Dies führt zu einer erhöhten SW-Qualität.
+	ServerEvents: Die Variable 'Fields.nSeverity' war fälschlicherweise als INT deklariert. Jetzt ist es korrekt ein UINT.
+	Korrektur in den Client-Tasks 'ClientC' und 'ClientST': In folgenden Schritten wurden bei FB-Fehlermeldungen die ErrorID vom falschen
+		FB übernommen: eSTEP_CREATE_SUBSCRIPT_VAR_WAIT, eSTEP_CREATE_SUBSCRIPT_EVT_WAIT.
+		Dies ist jetzt korrigiert.
+	ClientC und ClientST: Hinweis aufgenommen, dass zyklisches Lesen (Polling) niemals in einer Applikation implementiert werden sollte.

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.03.0" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Objects>
+    <Object Type="File">BrbLibUa - Dokumentation.pdf</Object>
+    <Object Type="File">BrbLibUa - Revisionsgeschichte.pdf</Object>
+    <Object Type="File">License.txt</Object>
+    <Object Type="File" Description="Exported functions and function blocks">BrbLibUa.fun</Object>
+    <Object Type="File" Description="Exported data types">Types.typ</Object>
+    <Object Type="File" Description="Exported constants">Constants.var</Object>
+    <Object Type="File">AnsiCFunc.h</Object>
+    <Object Type="Package" Description="Allgemeine Funktionen">General</Object>
+    <Object Type="Package">Client</Object>
+    <Object Type="Package">Server</Object>
+  </Objects>
+  <Dependencies>
+    <Dependency ObjectName="AsOpcUac" />
+    <Dependency ObjectName="AsOpcUas" />
+    <Dependency ObjectName="BrbLib" FromVersion="5.03.0" />
+    <Dependency ObjectName="DataObj" />
+    <Dependency ObjectName="FileIO" />
+  </Dependencies>
+</Library>

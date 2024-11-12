@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.1.178?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">ReadMe.txt</Object>
+    <Object Type="File" Description="Step-by-step guide creating own information models">OpcUa_MyMachine.pdf</Object>
+    <Object Type="File">aircondmodel.tt2pro</Object>
+    <Object Type="File">aircondmodel.xml</Object>
+    <Object Type="File">aircondmodel.ua</Object>
+    <Object Type="File">aircondmodel.bsd</Object>
+    <Object Type="File">aircondmodel.xsd</Object>
+  </Objects>
+</Package>

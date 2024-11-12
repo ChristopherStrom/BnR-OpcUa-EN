@@ -1,0 +1,19 @@
+;Konfiguration des BrbUa-Servers für ANSI-C
+
+;Namespaces
+"§NAMESPACE: Uri=http://opcfoundation.org/UA/"
+"§NAMESPACE: Uri=http://opcfoundation.org/UA/DI/"
+"§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/"
+"§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/PV/"
+
+;Event 0 (TransitionEventType)
+"§EVENT: TypeNs=0, TypeId=2311"
+"§EVTFIELD: Name=/Message,						Var=::BrbUaSrvC:SrvTransitionEventData.Message"
+"§EVTFIELD: Name=/Severity,						Var=::BrbUaSrvC:SrvTransitionEventData.nSeverity"
+"§EVTFIELD: Name=/SourceName,					Var=::BrbUaSrvC:SrvTransitionEventData.sSourceName"
+"§EVTFIELD: Name=/FromState,					Var=::BrbUaSrvC:SrvTransitionEventData.FromState"
+"§EVTFIELD: Name=/FromState/Id,				Var=::BrbUaSrvC:SrvTransitionEventData.nFromStateId"
+"§EVTFIELD: Name=/ToState,						Var=::BrbUaSrvC:SrvTransitionEventData.ToState"
+"§EVTFIELD: Name=/ToState/Id,					Var=::BrbUaSrvC:SrvTransitionEventData.nToStateId"
+"§EVTFIELD: Name=/Transition,					Var=::BrbUaSrvC:SrvTransitionEventData.Transition"
+"§EVTFIELD: Name=/Transition/Id,			Var=::BrbUaSrvC:SrvTransitionEventData.nTransitionId"

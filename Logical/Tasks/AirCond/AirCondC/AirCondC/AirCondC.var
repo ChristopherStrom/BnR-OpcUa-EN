@@ -1,0 +1,8 @@
+VAR
+	AirCond_BedRoom : AirCond_TYP;
+	AirCondIntern_BedRoom : AirCondIntern_TYP;
+	AirCond_Corridor : AirCond_TYP;
+	AirCondIntern_Corridor : AirCondIntern_TYP;
+	AirCond_LivingRoom : AirCond_TYP;
+	AirCondIntern_LivingRoom : AirCondIntern_TYP;
+END_VAR

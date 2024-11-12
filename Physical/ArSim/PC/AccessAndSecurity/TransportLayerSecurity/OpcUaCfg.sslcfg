@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="SslCfgOpcUaServer" Type="SSLCFG">
+    <Selector ID="SSLCfgType" Value="OpcUaServerSslCfg">
+      <Group ID="OwnCertificate">
+        <Property ID="OwnCertificate" Value="MyOpcUaServerCert.cer" />
+        <Property ID="OwnCertificatePrivateKey" Value="MyOpcUaServerKey.key" />
+      </Group>
+      <Selector ID="ValidateCommBuddy" Value="off" />
+    </Selector>
+  </Element>
+  <Element ID="SslCfgOpcUaClient" Type="SSLCFG">
+    <Selector ID="SSLCfgType" Value="OpcUaServerSslCfg">
+      <Group ID="OwnCertificate">
+        <Property ID="OwnCertificate" Value="MyOpcUaClientCert.cer" />
+        <Property ID="OwnCertificatePrivateKey" Value="MyOpcUaClientKey.key" />
+      </Group>
+      <Selector ID="ValidateCommBuddy" Value="off" />
+    </Selector>
+  </Element>
+</Configuration>

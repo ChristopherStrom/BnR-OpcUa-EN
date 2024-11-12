@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbUaRunClientInit.c</Object>
+    <Object Type="File">BrbUaRunClientCyclic.c</Object>
+    <Object Type="File">BrbUaRunClientExit.c</Object>
+    <Object Type="File">BrbUaRcReadBlock.c</Object>
+    <Object Type="File">BrbUaRcWriteBlock.c</Object>
+    <Object Type="File">BrbUaRcCallMethod.c</Object>
+    <Object Type="File">BrbUaRcGetSrvNamespace.c</Object>
+    <Object Type="File">BrbUaRcGetNodeHandle.c</Object>
+    <Object Type="File">BrbUaRcGetReadBlock.c</Object>
+    <Object Type="File">BrbUaRcGetReadItem.c</Object>
+    <Object Type="File">BrbUaRcGetWriteBlock.c</Object>
+    <Object Type="File">BrbUaRcGetWriteItem.c</Object>
+    <Object Type="File">BrbUaRcGetMethod.c</Object>
+    <Object Type="File">BrbUaRcGetArgument.c</Object>
+    <Object Type="File">BrbUaRcGetSubscription.c</Object>
+    <Object Type="File">BrbUaRcSetSubscription.c</Object>
+    <Object Type="File">BrbUaRcGetMonitoredItem.c</Object>
+    <Object Type="File">BrbUaRcSetMonitoredItem.c</Object>
+    <Object Type="File">BrbUaRcGetMiValueChanged.c</Object>
+    <Object Type="File">BrbUaRcGetMiRemainingValueCount.c</Object>
+    <Object Type="File">BrbUaRcGetEventItem.c</Object>
+    <Object Type="File">BrbUaRcGetEventItemReceived.c</Object>
+    <Object Type="File">BrbUaRcGetEventItemReceiveCount.c</Object>
+    <Object Type="File">BrbUaRcGetEventField.c</Object>
+    <Object Type="File">BrbUaRcMonitor.c</Object>
+  </Objects>
+</Package>

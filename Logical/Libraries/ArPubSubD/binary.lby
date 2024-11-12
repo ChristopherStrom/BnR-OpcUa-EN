@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="OPCUA PubSub diagnostics">
+  <Files>
+    <File>ArPubSubD.fun</File>
+    <File>ArPubSubD.typ</File>
+    <File>ArPubSubD.var</File>
+  </Files>
+</Library>

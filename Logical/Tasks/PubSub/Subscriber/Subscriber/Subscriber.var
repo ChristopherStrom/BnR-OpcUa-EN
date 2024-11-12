@@ -1,0 +1,3 @@
+VAR
+	SubscribedData : SubscribedData_TYP;
+END_VAR

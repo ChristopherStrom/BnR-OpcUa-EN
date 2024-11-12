@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">ReadMe.txt</Object>
+    <Object Type="File">OpcUaSample49_PublisherExport.uabinary</Object>
+    <Object Type="Program" Language="ANSIC" Description="Publisher-Diagnose">PubDiag</Object>
+  </Objects>
+</Package>

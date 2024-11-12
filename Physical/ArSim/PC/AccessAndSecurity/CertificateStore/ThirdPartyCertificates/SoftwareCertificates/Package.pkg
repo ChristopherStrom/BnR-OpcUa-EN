@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package SubType="SoftwareCertificates" PackageType="SoftwareCertificates" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">RnCommTest [EFE0E626B015436977BAE6EBDD22F2F2130AF4DB].der</Object>
+    <Object Type="File">RnCommTest [AAAF0A8F345BEB15A0CFA42E4B5BE8871B81456C].der</Object>
+  </Objects>
+</Package>

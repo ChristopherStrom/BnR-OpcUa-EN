@@ -1,0 +1,25 @@
+(********************************************************************
+ * COPYRIGHT --  
+ ********************************************************************
+ * Program: utTemplate_automated
+ * File: variables.var
+ * Author: -
+ * Created: - 
+ ********************************************************************
+ * Local variables of program utTemplate_automated
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='BrbUaLocalizedTexts',Description:='(Optional field)Template for use with helper tool. Reference or add this program in the package "TS_UnitTest_UpdateTestPrograms"',Type:=utMgrTEST_TYPE_C,MetaInformation:='(Optional field):To be filled');
+END_VAR
+(*Input variables for testing*)
+(*Constants*)
+VAR
+	localizedTextIn : BrUaLocalizedText;
+	stringIn : STRING[32];
+END_VAR
+(*Functionblock instances for testing*)
+(*Output variables for testing*)
+VAR
+	dwordOut : DWORD;
+END_VAR

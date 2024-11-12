@@ -1,0 +1,17 @@
+VAR
+	VarsLocal : OpcUaServerVars_TYP;
+	WriteC : OpcUaTestDatatypes_TYP;
+	WriteST : OpcUaTestDatatypes_TYP;
+	nIndex : UINT;
+END_VAR
+VAR CONSTANT
+	nDYNAMIC_ARRAY_INDEX_MAX : UINT := 9;
+END_VAR
+VAR
+	DummyStruct : OpcUaTest_TYP;
+	DynamicUintArrayLength : DynamicUintArrayLength_TYP;
+	DynamicUintArrayElements : DynamicUintArrayElements_TYP;
+	DynamicStructArrayLength : DynamicStructArrayLength_TYP;
+	DynamicStructArrayElements : DynamicStructArrayElements_TYP;
+	nWritableAttributes : USINT;
+END_VAR

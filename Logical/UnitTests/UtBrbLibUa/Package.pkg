@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">UnitTest_NoLint.txt</Object>
+    <Object Type="File" Description="Updates test programs within the current package">Update_TestPrograms_in_current_location.bat</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaStatus</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaNodes</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaAttributes</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaVariantValues</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaByteStrings</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaLocalizedTexts</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaQualifiedNames</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaTimeAndDate</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaAdditional</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaClient</Object>
+    <Object Type="Program" Language="ANSIC" Description="UnitTests">UtBrbUaServer</Object>
+  </Objects>
+</Package>

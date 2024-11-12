@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">BrbUaRunServerInit.c</Object>
+    <Object Type="File">BrbUaRunServerCyclic.c</Object>
+    <Object Type="File">BrbUaRunServerExit.c</Object>
+    <Object Type="File">BrbUaRsFireEvent.c</Object>
+    <Object Type="File">BrbUaRsGetNamespace.c</Object>
+    <Object Type="File">BrbUaRsGetEvent.c</Object>
+    <Object Type="File">BrbUaRsGetEventField.c</Object>
+    <Object Type="File">BrbUaRsMonitor.c</Object>
+  </Objects>
+</Package>

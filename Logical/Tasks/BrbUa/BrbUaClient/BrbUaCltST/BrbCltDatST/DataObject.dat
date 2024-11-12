@@ -1,0 +1,87 @@
+;Konfiguration des BrbUa-Clients für ST
+
+;Connection (Endpoint-Url wird im Programm gesetzt, nicht angegebene Parameter bleiben auf Default-Werten)
+"§CONNECTION: SessionName=BrbUaClientST, AppName=AppBrbUaClientST, CertStore=SslCfgOpcUaClient, UserToken=1, TokenPar1=Admin, TokenPar2=admin, Locales=de;en"
+
+;Namespaces
+"§NAMESPACE: Uri=http://opcfoundation.org/UA/"
+"§NAMESPACE: Uri=http://opcfoundation.org/UA/DI/"
+"§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/"
+"§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/PV/"
+
+;NodeHandles
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUdint"
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nDint"
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.anInt"
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.nUdint"
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.nDint"
+"§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.anInt"
+
+;ReadBlock 0
+"§READBLOCK:"
+"§READITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUdint,		Var=::BrbUaCltST:ClientVarsRead.nUdint,	AttId=13"
+"§READITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nDint,			Var=::BrbUaCltST:ClientVarsRead.nDint"
+"§READITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.anInt,			Var=::BrbUaCltST:ClientVarsRead.anInt"
+
+;WriteBlock 0
+"§WRITEBLOCK:"
+"§WRITEITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.nUdint,		Var=::BrbUaCltST:ClientVarsRead.nUdint,	AttId=13"
+"§WRITEITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.nDint,			Var=::BrbUaCltST:ClientVarsRead.nDint"
+"§WRITEITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.WriteOnly.anInt,			Var=::BrbUaCltST:ClientVarsRead.anInt"
+
+;Method 0 (Calculate)
+"§METHOD: Ns=3, ObjectId=::BrbUaSrvST, MethodId=::BrbUaSrvST:Calculate, Timeout=1000"
+"§METHODARGIN: Name=nValue0, Var=::BrbUaCltST:ClientMethCalculateArgs.In.nVal0"
+"§METHODARGIN: Name=nValue1, Var=::BrbUaCltST:ClientMethCalculateArgs.In.nVal1"
+"§METHODARGIN: Name=anArrayIn, Var=::BrbUaCltST:ClientMethCalculateArgs.In.anArray"
+"§METHODARGOUT: Name=nAddition, Var=::BrbUaCltST:ClientMethCalculateArgs.Out.nAddition"
+"§METHODARGOUT: Name=nMultiplication, Var=::BrbUaCltST:ClientMethCalculateArgs.Out.nMultiplication"
+"§METHODARGOUT: Name=anArrayOut, Var=::BrbUaCltST:ClientMethCalculateArgs.Out.anArray"
+
+;Subscription 0 (Vars)
+"§SUBSCRIPTION: Ena=1, Prio=200, PubInt=500"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.bBool,			Var=::BrbUaCltST:ClientVarsSubscription.bBool"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUsint,			Var=::BrbUaCltST:ClientVarsSubscription.nUsint"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUint,			Var=::BrbUaCltST:ClientVarsSubscription.nUint"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUdint,			Var=::BrbUaCltST:ClientVarsSubscription.nUdint"
+
+;Subscription 1 (Vars)
+"§SUBSCRIPTION: Ena=1, Prio=100, PubInt=1000"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nSint,			Var=::BrbUaCltST:ClientVarsSubscription.nSint"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nInt,				Var=::BrbUaCltST:ClientVarsSubscription.nInt"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nDint,			Var=::BrbUaCltST:ClientVarsSubscription.nDint"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.rReal,			Var=::BrbUaCltST:ClientVarsSubscription.rReal"
+
+;Subscription 2 (Vars)
+"§SUBSCRIPTION: Ena=1, Prio=50, PubInt=2000"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.rLongReal,	Var=::BrbUaCltST:ClientVarsSubscription.rLongReal"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.sString,		Var=::BrbUaCltST:ClientVarsSubscription.sString"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.tTime,			Var=::BrbUaCltST:ClientVarsSubscription.tTime"
+"§MONITEM: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.dtDateTime,	Var=::BrbUaCltST:ClientVarsSubscription.dtDateTime"
+
+;Subscription 3 (Event)
+"§SUBSCRIPTION: Ena=1, Prio=250, PubInt=100"
+"§EVTITEM: EvtNs=0, EvtId=2253, TypeNs=0, TypeId=2311, Timeout=1000, CallOperate=1"
+"§EVTFIELD: FieldNs=0, FieldPath=EventId,										Var=::BrbUaCltST:ClientReceivedEvent.EventId"
+"§EVTFIELD: FieldNs=7, FieldPath=EventType,									Var=::BrbUaCltST:ClientReceivedEvent.EventType"
+"§EVTFIELD: FieldNs=0, FieldPath=LocalTime,									Var=::BrbUaCltST:ClientReceivedEvent.LocalTime"
+"§EVTFIELD: FieldNs=0, FieldPath=Message,										Var=::BrbUaCltST:ClientReceivedEvent.Message"
+"§EVTFIELD: FieldNs=0, FieldPath=ReceiveTime,								Var=::BrbUaCltST:ClientReceivedEvent.ReceiveTime"
+"§EVTFIELD: FieldNs=0, FieldPath=Severity,									Var=::BrbUaCltST:ClientReceivedEvent.nSeverity"
+"§EVTFIELD: FieldNs=0, FieldPath=SourceName,								Var=::BrbUaCltST:ClientReceivedEvent.sSourceName"
+"§EVTFIELD: FieldNs=0, FieldPath=SourceNode,								Var=::BrbUaCltST:ClientReceivedEvent.SourceNode"
+"§EVTFIELD: FieldNs=0, FieldPath=FromState,									Var=::BrbUaCltST:ClientReceivedEvent.FromState"
+"§EVTFIELD: FieldNs=0, FieldPath=FromState,		FieldPath=Id,	Var=::BrbUaCltST:ClientReceivedEvent.nFromStateId"
+"§EVTFIELD: FieldNs=0, FieldPath=ToState,										Var=::BrbUaCltST:ClientReceivedEvent.ToState"
+"§EVTFIELD: FieldNs=0, FieldPath=ToState,			FieldPath=Id,	Var=::BrbUaCltST:ClientReceivedEvent.nToStateId"
+"§EVTFIELD: FieldNs=0, FieldPath=Transition,								Var=::BrbUaCltST:ClientReceivedEvent.Transition"
+"§EVTFIELD: FieldNs=0, FieldPath=Transition,	FieldPath=Id,	Var=::BrbUaCltST:ClientReceivedEvent.nTransitionId"
+
+;Subscription 4 (ServerDiag)
+"§SUBSCRIPTION: Ena=1, Prio=250, PubInt=1000"
+"§MONITEM: Ns=0, Id=2255,		Var=::BrbUaCltST:ServerNamespacesArray"
+"§MONITEM: Ns=0, Id=2256,		Var=::BrbUaCltST:ServerStatus"
+"§MONITEM: Ns=0, Id=2275,		Var=::BrbUaCltST:ServerDiagData"
+"§MONITEM: Ns=0, Id=3707,		Var=::BrbUaCltST:SessionDiagnosticsArray"
+"§MONITEM: Ns=0, Id=3708,		Var=::BrbUaCltST:SessionSecurityDiagnosticsArray"
+"§MONITEM: Ns=0, Id=2290,		Var=::BrbUaCltST:SubscriptionDiagnosticsArray"

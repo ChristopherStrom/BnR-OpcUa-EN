@@ -1,0 +1,8 @@
+VAR
+	nUint64 : BrbUint64_TYP;
+	sUint64 : STRING[nBRB_UINT64_CHAR_MAX];
+	ChangeUint64Inst : ChangeUint64C_TYP;
+	nInt64 : BrbInt64_TYP;
+	sInt64 : STRING[nBRB_INT64_CHAR_MAX];
+	ChangeInt64Inst : ChangeInt64C_TYP;
+END_VAR

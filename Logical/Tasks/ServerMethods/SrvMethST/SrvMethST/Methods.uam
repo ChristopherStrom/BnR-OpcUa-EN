@@ -1,0 +1,13 @@
+
+OPCUA_METHOD Calculate
+	ARG_INPUT
+		nValue0 : Int32 := MethCalculateArgs.In.nVal0;
+		nValue1 : Int32 := MethCalculateArgs.In.nVal1;
+		anArrayIn : Int16[0..nMETHOD_CALC_ARRAY_INDEX_MAX] := MethCalculateArgs.In.anArray;
+	END_ARG
+	ARG_OUTPUT
+		nAddition : Int32 := MethCalculateArgs.Out.nAddition;
+		nMultiplication : Int32 := MethCalculateArgs.Out.nMultiplication;
+		anArrayOut : Int16[0..nMETHOD_CALC_ARRAY_INDEX_MAX] := MethCalculateArgs.Out.anArray;
+	END_ARG
+END_OPCUA_METHOD

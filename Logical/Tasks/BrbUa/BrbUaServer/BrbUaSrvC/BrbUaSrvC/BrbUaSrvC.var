@@ -1,0 +1,24 @@
+(*Data*)
+VAR
+	VarsLocal : OpcUaServerVars_TYP;
+	EventId : UAByteStringBrbEventId_TYP;
+END_VAR
+(*Method*)
+VAR
+	MethodCalculate : BrbUaSrvMethod_TYP;
+	MethCalculateArgs : MethCalculateArgs_TYP;
+END_VAR
+(*RunServer*)
+VAR
+	RunServer : BrbUaRunServer_TYP;
+	fbBrbUaRunServerInit : BrbUaRunServerInit;
+	fbBrbUaRunServerCyclic : BrbUaRunServerCyclic;
+	fbBrbUaRunServerExit : BrbUaRunServerExit;
+	fbTimerFireEvent : TON;
+	fbBrbUaRsFireEvent : BrbUaRsFireEvent;
+	SrvTransitionEventData : TransitionEvent_TYP;
+END_VAR
+(*Monitor*)
+VAR
+	RsMonitor : BrbUaRsMonitor_TYP;
+END_VAR

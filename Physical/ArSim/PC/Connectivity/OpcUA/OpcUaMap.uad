@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<OpcUaSource FileVersion="7" ArVersion="D4.91">
+  <NamespaceUris>
+    <Uri>http://br-automation.com/AirCondModel/</Uri>
+  </NamespaceUris>
+  <Aliases>
+    <ACLAliases>
+      <ACL Id="1">
+        <ACE RoleName="Administrators" Access="0x017F" />
+        <ACE RoleName="Everyone" Access="0x015F" />
+      </ACL>
+      <ACL Id="2">
+        <ACE RoleName="Administrators" Access="0x017F" />
+        <ACE RoleName="Everyone" Access="0x0157" />
+      </ACL>
+      <ACL Id="3">
+        <ACE RoleName="Administrators" Access="0x016B" />
+        <ACE RoleName="Everyone" Access="0x014B" />
+      </ACL>
+      <ACL Id="4">
+        <ACE RoleName="Administrators" Access="0x015F" />
+        <ACE RoleName="Everyone" Access="0x015F" />
+      </ACL>
+      <ACL Id="8">
+        <ACE RoleName="Administrators" Access="0x011F" />
+        <ACE RoleName="Everyone" Access="0x0117" />
+      </ACL>
+      <ACL Id="9">
+        <ACE RoleName="Everyone" Access="0x0157" />
+        <ACE RoleName="Administrators" Access="0x015F" />
+      </ACL>
+      <ACL Id="10">
+        <ACE RoleName="Everyone" Access="0x0057" />
+        <ACE RoleName="Administrators" Access="0x0057" />
+      </ACL>
+      <ACL Id="11">
+        <ACE RoleName="Everyone" Access="0x0057" />
+        <ACE RoleName="Administrators" Access="0x0077" />
+      </ACL>
+      <ACL Id="14">
+        <ACE RoleName="Administrators" Access="0x016B" />
+        <ACE RoleName="Everyone" Access="0x0163" />
+      </ACL>
+      <ACL Id="15">
+        <ACE RoleName="Administrators" Access="0x016B" />
+        <ACE RoleName="Everyone" Access="0x0143" />
+      </ACL>
+    </ACLAliases>
+    <EURangeViolationAliases>
+      <EURangeViolation Id="2" Mode="2" />
+      <EURangeViolation Id="3" Mode="1" />
+    </EURangeViolationAliases>
+    <EURangesAliases>
+      <EURanges Id="1">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">5</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="2">
+        <EURange>
+          <Low ValueProvider="Const">15.0</Low>
+          <High ValueProvider="Const">26.0</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="3">
+        <EURange>
+          <Low ValueProvider="Const">0.0</Low>
+          <High ValueProvider="Const">30.0</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="4">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">30</High>
+        </EURange>
+      </EURanges>
+    </EURangesAliases>
+    <EngineeringUnitAliases>
+      <EngineeringUnit Id="1" UnitId="4408652" NameSpaceUri="http://www.opcfoundation.org/UA/units/un/cefact" Name="degree Celsius" Symbol="°C" />
+    </EngineeringUnitAliases>
+  </Aliases>
+  <DefaultView AclId="2">
+    <Module Name="&lt;Default&gt;">
+      <GlobalVariables>
+        <NodeDescription>
+          <Description>Default-Namespace/VarsGlobal</Description>
+        </NodeDescription>
+        <Variable AclId="1" AclInherit="2" Name="gVarsGlobal" AutomaticEnable="True">
+          <NodeDescription>
+            <Description>Default-Namespace/VarsGlobal</Description>
+          </NodeDescription>
+          <Variable AclId="3" AclInherit="2" Name="WriteOnly" />
+          <Variable AclId="4" AclInherit="2" Name="ReadOnly" />
+        </Variable>
+      </GlobalVariables>
+      <Task Name="SrvMethC">
+        <Method Name="Calculate" />
+      </Task>
+      <Task Name="SrvMethST">
+        <Method Name="Calculate" />
+      </Task>
+      <Task Name="ServerData">
+        <Variable AclId="4" AclInherit="2" Name="VarsLocal" AutomaticEnable="True">
+          <NodeDescription>
+            <Description>Default-Namespace/VarsLocal</Description>
+          </NodeDescription>
+          <Variable AclId="3" AclInherit="2" Name="WriteOnly" />
+          <Variable AclId="1" AclInherit="2" Name="ReadWrite" />
+        </Variable>
+        <Variable AclId="3" AclInherit="2" Name="WriteC" AutomaticEnable="True" />
+        <Variable AclId="3" AclInherit="2" Name="WriteST" AutomaticEnable="True" />
+        <Variable AclId="2" AclInherit="2" WriteMask="100" Name="nWritableAttributes">
+          <NodeDescription>
+            <Description>Schreibbare Attribute</Description>
+          </NodeDescription>
+        </Variable>
+        <Variable Name="DynamicStructArrayLength" />
+        <Variable Name="DynamicUintArrayLength" />
+        <Variable Name="DynamicStructArrayElements" />
+        <Variable Name="DynamicUintArrayElements" />
+        <Variable Name="DummyStruct" />
+      </Task>
+      <Task Name="UaCertsC">
+        <Method Name="OwnGetCertificateList" />
+        <Method Name="OwnGenerate" />
+        <Method Name="OwnDelete" />
+        <Method Name="OwnImport" />
+        <Method Name="ForeignGetCertificateList" />
+        <Method Name="ForeignImport" />
+        <Method Name="ForeignDelete" />
+        <Method Name="SslGetCfgList" />
+        <Method Name="SslGetTrustedCertList" />
+        <Method Name="Warmstart" />
+      </Task>
+      <Task Name="UaCertsST">
+        <Method Name="ForeignDelete" />
+        <Method Name="ForeignGetCertificateList" />
+        <Method Name="ForeignImport" />
+        <Method Name="OwnDelete" />
+        <Method Name="OwnGenerate" />
+        <Method Name="OwnGetCertificateList" />
+        <Method Name="OwnImport" />
+        <Method Name="SslGetCfgList" />
+        <Method Name="SslGetTrustedCertList" />
+        <Method Name="Warmstart" />
+      </Task>
+      <Task Name="SrvEvntC">
+        <Variable AclId="8" AclInherit="2" Name="Fields">
+          <Variable AclInherit="1" Name="nProgress" />
+          <Variable Name="Context" />
+        </Variable>
+      </Task>
+      <Task Name="SrvEvntST">
+        <Variable AclId="8" AclInherit="2" Name="Fields">
+          <Variable AclInherit="1" Name="nProgress" />
+          <Variable Name="Context" />
+        </Variable>
+      </Task>
+      <Task AclId="9" AclInherit="2" Name="AirCondC">
+        <Variable Name="AirCond_BedRoom">
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6045" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6044" />
+          </Variable>
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6042" />
+            <Variable Name="rTemperature" EURangesId="3" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6043" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6041" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6095" />
+        </Variable>
+        <Variable Name="AirCond_Corridor">
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6050" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6049" />
+          </Variable>
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6047" />
+            <Variable Name="rTemperature" EURangesId="3" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6048" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6046" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6096" />
+        </Variable>
+        <Variable Name="AirCond_LivingRoom">
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6055" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6054" />
+          </Variable>
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6052" />
+            <Variable Name="rTemperature" EURangesId="3" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6053" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6051" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6097" />
+        </Variable>
+        <Method Name="BedRoomSetOperationMode" ImplementationOf="ns=5;i=7005" />
+        <Method Name="CorridorSetOperationMode" ImplementationOf="ns=5;i=7006" />
+        <Method Name="LivingRoomSetOperationMode" ImplementationOf="ns=5;i=7007" />
+      </Task>
+      <Task AclId="9" AclInherit="2" Name="AirCondST">
+        <Variable Name="AirCond_BedRoom">
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6071" />
+            <Variable Name="rTemperature" EURangesId="4" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6072" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6070" />
+          </Variable>
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6074" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6073" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6098" />
+        </Variable>
+        <Variable Name="AirCond_Corridor" ValueAttributeOf="ns=5;i=6099">
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6078" />
+            <Variable Name="rTemperature" EURangesId="3" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6079" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6077" />
+          </Variable>
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6081" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6080" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6099" />
+        </Variable>
+        <Variable Name="AirCond_LivingRoom">
+          <Variable Name="Act">
+            <Variable Name="eOperationMode" ValueAttributeOf="ns=5;i=6085" />
+            <Variable Name="rTemperature" EURangesId="3" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6086" />
+            <Variable Name="nFanLevel" EURangesId="1" ValueAttributeOf="ns=5;i=6084" />
+          </Variable>
+          <Variable AclId="2" AclInherit="2" Name="Set">
+            <Variable AclId="2" AclInherit="2" Name="rTemperature" EURangeViolationId="3" EURangesId="2" EngineeringUnitId="1" ValueAttributeOf="ns=5;i=6088" />
+            <Variable AclId="2" AclInherit="2" Name="nFanLevel" EURangeViolationId="2" EURangesId="1" ValueAttributeOf="ns=5;i=6087" />
+          </Variable>
+          <Variable Name="sName" ValueAttributeOf="ns=5;i=6100" />
+        </Variable>
+        <Method Name="BedRoomSetOperationMode" ImplementationOf="ns=5;i=7008" />
+        <Method Name="CorridorSetOperationMode" ImplementationOf="ns=5;i=7009" />
+        <Method Name="LivingRoomSetOperationMode" ImplementationOf="ns=5;i=7010" />
+      </Task>
+      <Task AclId="10" AclInherit="2" Name="OpcUaAny">
+        <Variable Name="Data">
+          <Variable Name="Read">
+            <Variable Name="Server">
+              <Variable Name="nUsint" />
+              <Variable Name="nUint" />
+              <Variable Name="nUdint" />
+            </Variable>
+            <Variable Name="Client">
+              <Variable Name="nUsint" />
+              <Variable Name="nUint" />
+              <Variable Name="nUdint" />
+            </Variable>
+          </Variable>
+          <Variable Name="Write">
+            <Variable Name="Server">
+              <Variable AclId="11" AclInherit="2" Name="nUsint" />
+              <Variable AclId="11" AclInherit="2" Name="nUint" />
+              <Variable AclId="11" AclInherit="2" Name="nUdint" />
+            </Variable>
+            <Variable Name="Client">
+              <Variable Name="nUsint" />
+              <Variable Name="nUint" />
+              <Variable Name="nUdint" />
+            </Variable>
+          </Variable>
+        </Variable>
+      </Task>
+      <Task Name="Subscriber">
+        <Variable Name="SubscribedData" AutomaticEnable="True" />
+      </Task>
+      <Task Name="BrbUaSrvC">
+        <Variable Name="VarsLocal" AutomaticEnable="True">
+          <Variable AclId="14" AclInherit="2" Name="WriteOnly" />
+          <Variable AclInherit="1" Name="ReadOnly" />
+          <Variable Name="ReadWrite" />
+        </Variable>
+        <Variable Name="EventId" />
+        <Method Name="Calculate" />
+      </Task>
+      <Task Name="BrbUaSrvST">
+        <Variable Name="VarsLocal" AutomaticEnable="True">
+          <Variable AclId="15" AclInherit="2" Name="WriteOnly" />
+          <Variable Name="ReadWrite" />
+          <Variable AclInherit="1" Name="ReadOnly" />
+        </Variable>
+        <Variable Name="EventId" />
+        <Method Name="Calculate" />
+      </Task>
+      <Task Name="SrvDt64C">
+        <Variable Name="nInt64" DataType="ns=0;i=8" />
+        <Variable Name="nUint64" DataType="ns=0;i=9" />
+      </Task>
+      <Task Name="SrvDt64ST">
+        <Variable Name="nInt64" DataType="ns=0;i=8" />
+        <Variable Name="nUint64" DataType="ns=0;i=9" />
+      </Task>
+    </Module>
+  </DefaultView>
+</OpcUaSource>

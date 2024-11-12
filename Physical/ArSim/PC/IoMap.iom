@@ -1,0 +1,17 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * File: IoMap.iom
+ * Author: niedermeierr
+ * Created: July 26, 2018
+ ********************************************************************
+ * IO mapping file
+ ********************************************************************)
+VAR_CONFIG
+	::OpcUaAny:Data.Read.Client.nUsint AT %IB."OpcUa_any".Read_Usint;
+	::OpcUaAny:Data.Read.Client.nUint AT %IW."OpcUa_any".Read_Uint;
+	::OpcUaAny:Data.Read.Client.nUdint AT %ID."OpcUa_any".Read_Udint;
+	::OpcUaAny:Data.Write.Client.nUsint AT %QB."OpcUa_any".Write_Usint;
+	::OpcUaAny:Data.Write.Client.nUint AT %QW."OpcUa_any".Write_Uint;
+	::OpcUaAny:Data.Write.Client.nUdint AT %QD."OpcUa_any".Write_Udint;
+END_VAR

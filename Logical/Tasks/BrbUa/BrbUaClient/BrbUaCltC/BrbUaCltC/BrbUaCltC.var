@@ -1,0 +1,32 @@
+(*Client*)
+(*Insert your comment here.*)
+VAR
+	RunClient : BrbUaRunClient_TYP;
+	fbBrbUaRunClientInit : BrbUaRunClientInit;
+	fbBrbUaRunClientCyclic : BrbUaRunClientCyclic;
+	fbBrbUaRunClientExit : BrbUaRunClientExit;
+	fbTimerReadBlock0 : TON;
+	fbBrbUaRcReadBlock0 : BrbUaRcReadBlock;
+	fbTimerWriteBlock0 : TON;
+	fbBrbUaRcWriteBlock0 : BrbUaRcWriteBlock;
+	fbTimerCallMethodCalculate : TON;
+	fbBrbUaRcCallMethodCalculate : BrbUaRcCallMethod;
+END_VAR
+(*Application Variables*)
+VAR
+	ClientVarsSubscription : OpcUaTestDatatypes_TYP;
+	ClientVarsRead : OpcUaTestDatatypes_TYP;
+	ClientMethCalculateArgs : MethCalculateArgs_TYP;
+	ClientReceivedMonItem : ClientReceivedMonItem_TYP;
+	ClientReceivedEvent : TransitionEvent_TYP;
+	ServerNamespacesArray : BrbUaServerNamespacesArray_TYP;
+	ServerStatus : BrbUaServerStatus_TYP;
+	ServerDiagData : BrbUaServerDiagData_TYP;
+	SessionDiagnosticsArray : BrbUaSessDiagArray_TYP;
+	SessionSecurityDiagnosticsArray : BrbUaSessSecDiagArray_TYP;
+	SubscriptionDiagnosticsArray : BrbUaSubscriptDiagArray_TYP;
+END_VAR
+(*Monitor*)
+VAR
+	RcMonitor : BrbUaRcMonitor_TYP;
+END_VAR
