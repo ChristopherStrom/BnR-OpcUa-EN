@@ -7,7 +7,7 @@
 "§NAMESPACE: Uri=http://opcfoundation.org/UA/"
 "§NAMESPACE: Uri=http://opcfoundation.org/UA/DI/"
 "§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/"
-"§NAMESPACE: Uri=http://br-automation.com/OpcUa/PLC/PV/"
+"§NAMESPACE: Uri=http://br-automation.com/Opc Ua/PLC/PV/"
 
 ;NodeHandles
 "§NODEHANDLE: Ns=3, Id=::BrbUaSrvST:VarsLocal.ReadOnly.nUdint"
