@@ -1,83 +1,76 @@
+The OpcUaAny client is added as a hardware module to the Ethernet interface.
+It represents a server as an I/O module and is parameterized like a "normal" I/O module.
+It is automatically managed by a client integrated into the operating system.
 
-Der OpcUaAny-Client ist als HW-Modul an der Ethernet-Schnittstelle eingefügt.
-Er repräsentiert einen Server als IO-Modul und wird auch als 'normales' IO-Modul parametriert. Bedient
-wird er automatisch durch einen im Betriebssystem integrierten Client.
+General Configuration:
+    - The setting "Module supervised" should be set to "off".
+      If set to "on" and the module (server) is not reachable, the PLC enters ServiceMode.
+    - The "Server Diagnostics" setting provides diagnostic values, which can be mapped to variables (see IO-Mapping).
+    - The SSL configuration uses the same certificate (valid for 50 years) as the library client.
+      If no certificate is specified, one with a 10-year validity is automatically created.
+    - User credentials for client authentication on the server are configured here.
 
-Allgemeine Konfiguration:
-	Die Einstellung 'Module supervised' sollte auf 'off' stehen. Sie verhält sie genauso wie bei jedem anderen
-	IO-Modul. Das bedeutet, wenn sie auf 'on' steht und das Modul (also der Server) nicht erreicht wird, geht
-	die SPS in den ServiceMode!
-	Durch die Einstellung 'Server Diagnostics' werden Diagnose-Werte zur Verfügung gestellt, welche auf
-	Variablen gemappt werden können (siehe IO-Mapping).
-	Bei den Security-Einstellungen ist die SSL-Config angegeben, welche auch schon für den Lib-Client verwendet 
-	wird (Zertifikat mit 50 Jahren Laufzeit). Auch hier gilt: Wenn kein Zertifikat angegeben wird, wird 
-	automatisch eines mit einer Laufzeit von 10 Jahren angelegt.
-	Ausserdem ist hier der Benutzer eingestellt, mit dem sich der Client am Server anmeldet.
-	
-Kanal-Konfiguration:
-	Es wurden für dieses Beispiel je 3 Eingangs- und 3 Ausgangs-Kanäle angelegt. Eingänge dienen dem Lesen vom
-	Server (genauer gesagt Abonnieren als MonitoredItems in Subscription(s)), Ausgänge dienen dem zyklischen
-	Schreiben auf den Server.
+Channel Configuration:
+    - Three input and three output channels are set up in this example.
+      * Inputs: Used for reading from the server (MonitoredItems in Subscriptions).
+      * Outputs: Used for cyclic writing to the server.
 
-	Zum Angeben des Knotens wird dabei nicht wie im Lib-Client eine NodeId verwendet, sondern die Einstellung
-	'Browse path', welche eine alternative Addressierung darstellt. Sie muss den korrekten Browse-Pfad des zu
-	addressierenden Knotens enthalten.
-	Er besteht aus einzelnen Elementen, welche durch '/' getrennt sind und jeweils einen Knoten der Hierarchie
-	darstellen. Ein Element enthält den Wert des Attributs 'BrowseName' des Knotens. Dieser wiederum besteht aus dem
-	Namespace-Index und dann durch Doppelpunkt getrennt dem Knotennamen. Um Sonderzeichen trotzdem auch im
-	eigentlichen Namen verwenden zu können, werden diese innerhalb des Pfades mit einem '&' als Prefix gekennzeichnet.
-	Folgende Sonderzeichen werden gekennzeichnet:
-		Zeichen			Ersetzung
-		&						&&
-		!						&!
-		#						&#
-		:						&:
-		>						&>
-		<						&<
-		.						&.
-		/						&/
-		
-	Somit ergibt z.B. bei B&R folgender Browse-Pfad:
-	/0:Root/0:Objects/4:PLC/4:Modules/7:&:&:/7:OpcUaAny/7:Data/7:Read/7:Server/7:nUsint
-	|																	|				|						|
-	|																	|				|						+---	Ab hier beginnt der Variablenname
-	|																	|				+---------------	Hier steht der Taskname
-	|																	+-----------------------	Die : des Namens werden mit Präfix '&' gekennzeichnet
-	+---------------------------------------------------------	Dies ist der Beginn des hierarchischen Address-Baums
-																															Er ist bei B&R immer gleich
+    - Instead of using NodeId like the library client, the "Browse path" is used.
+      It must contain the correct path to the target node, formatted as:
+        <NamespaceIndex>:<NodeName>
+      - Path consists of elements separated by '/', each representing a node in the hierarchy.
+      - Special characters are prefixed with '&'.
 
-	Bei Fremd-Herstellern anderer Server kann der Pfad anders lauten.
-	Im Zweifelsfalle können die BrowseNames der einzelnen Knoten durch einen generischen Client wie z.B.
-	'UAExpert' (frei im Internet erhältlicher Windows-UA-Client) herausgefunden werden.
-	
+    Special character replacements:
+        Character      Replacement
+        &              &&
+        !              &!
+        #              &#
+        :              &:
+        >              &>
+        <              &<
+        .              &.
+        /              &/
+
+    Example B&R Browse Path:
+        /0:Root/0:Objects/4:PLC/4:Modules/7:&:&:/7:OpcUaAny/7:Data/7:Read/7:Server/7:nUsint
+
+        |                                                |         |            |
+        |                                                |         |            +--- Variable Name Starts Here
+        |                                                |         +---------------- Task Name
+        |                                                +-------------------------- ':' in name prefixed with '&'
+        +-------------------------------------------------------------------------- Start of Hierarchical Address Tree
+
+        For other vendors, the path format may differ.
+        Use a generic client like UAExpert to determine BrowseNames.
+
 IO-Mapping:
-	Standard-Kanäle
-		ModuleOk
-			Verhält sich wie bei einem normalen IO-Modul: Wenn der Server nicht erreichbar ist oder die Verbindung
-			abbricht, geht dieser Kanal auf 'False'. Sobald die Verbindung besteht, ist er 'True'.
-		ConnectionLostCount, ClientErrorCount und LastClientError
-			Immer vorhandene Diagnose-Datenpunkte. Wenn ein Parametrier-Fehler vorliegt (z.B. falscher Browse-Pfad), kann
-			dies an 'LastClientError' gesehen werden.
-		ServerViewCount, CurrentSessionCount usw.
-			Nur dann vorhandene Diagnose-Datenpunkte, wenn die Einstellung 'Server Diagnostics' auf 'on' steht.
-		
-	Benutzerdefinierte Kanäle
-		Hier können die Kanäle gemappt werden, welche in der Konfiguration parametriert wurden.
-	
-	Wichtig: Eine zu mappende Variable muss den zum Datenpunkt passenden Datentyp haben!
-	
-Variablen in diesem Beispiel
-	Der Task 'OpcUaAny' ist in diesem Beispiel nur vorhanden, um Variablen bereit zu stellen, welche an die
-	Datenpunkte gemappt werden können.
-	
-	Eingänge:
-		Die Elemente der Struktur 'Data.Read.Server' werden im Task inkrementiert und vom Client abonniert. Die
-		empfangenen Werte werden auf die Struktur 'Data.Read.Client' geschrieben.
+    Standard Channels:
+        - ModuleOk:
+            * Behaves like a normal I/O module.
+            * False if server unreachable or connection lost.
+            * True when the connection is established.
+        - ConnectionLostCount, ClientErrorCount, LastClientError:
+            * Always available diagnostic data points.
+            * Errors (e.g., incorrect browse path) shown in LastClientError.
+        - ServerViewCount, CurrentSessionCount:
+            * Available only if "Server Diagnostics" is enabled.
 
-	Ausgänge:
-		Die Elemente der Struktur 'Data.Write.Client' werden im Task inkrementiert und vom Client geschrieben.
-		Serverseitig addressiert sind dabei die Elemente der Struktur 'Data.Write.Server'.
-	
-Verbindungsabbruch
-	Wie schon beim Lib-Client wird auch hier nach einem Verbindungsabbruch die gesamte Kommunikation wieder
-	automatisch restauriert. Ob eine Verbindung besteht, kann über den Eingangs-Kanal 'ModuleOk' abgefragt werden.
+    Custom Channels:
+        - Configured channels can be mapped here.
+        - Important: Variable types must match the data points.
+
+Variables in This Example:
+    - Task "OpcUaAny" provides variables mapped to data points.
+
+    Inputs:
+        * Elements in "Data.Read.Server" are incremented and subscribed by the client.
+        * Received values are written to "Data.Read.Client".
+
+    Outputs:
+        * Elements in "Data.Write.Client" are incremented and written by the client.
+        * These map to "Data.Write.Server" on the server.
+
+Connection Loss:
+    - As with the library client, communication is automatically restored after connection loss.
+    - Use the input channel "ModuleOk" to check connection status.
