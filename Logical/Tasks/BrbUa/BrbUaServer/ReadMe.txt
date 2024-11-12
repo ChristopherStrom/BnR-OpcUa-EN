@@ -1,13 +1,13 @@
 
-Hier werden dieselben lokalen Variablen 'VarsLocal' zur Verfügung gestellt wie im Task 'ServerData'.
-Auf sie wird im Task 'BrbUaClient' zugegriffen.
-Zusätzlich wird der Umgang mit dem Datentyp "UAByteStringBrbEventId_TYP" gezeigt, welcher eine 16 Byte lange
-EventId aufnimmt und veröffentlicht.
+Here, the same local variables 'VarsLocal' are provided as in the task 'ServerData.'
+These are accessed in the task 'BrbUaClient.'
+Additionally, the handling of the data type "UAByteStringBrbEventId_TYP" is demonstrated,
+which stores and publishes a 16-byte EventId.
 
-Ausserdem ist dieselbe Methode 'Calculate' implementiert wie im Task 'ServerMethods'.
-Beachtenswert ist die Kürze des Codes. Statt einer kompletten Schrittkette kann die Methode in einem relativ
-kleinen If-Then-Else-Block abgehandelt werden.
+Furthermore, the same method 'Calculate' is implemented as in the task 'ServerMethods.'
+Noteworthy is the brevity of the code. Instead of a complete step chain, the method can be handled in a relatively
+small If-Then-Else block.
 
-Auch das Feuern eines Events mithilfe des RunServers ist hier implementiert. Im Gegegsatz zur herkömmlichen
-Programmierung (Tasks 'ServerEvents') wird hier aber nicht das Event 'ProgessType', sondern 'TransitionType'
-gefeuert. Auch hier ist die Kürze des Codes ausschlaggebend.
+The firing of an event using the RunServer is also implemented here.
+In contrast to conventional programming (tasks 'ServerEvents'), the event 'TransitionType' is fired instead of 'ProgessType.'
+The concise code structure highlights the efficiency of this approach.

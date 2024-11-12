@@ -1,5 +1,4 @@
-
-(* Hilfsfunktion zum Ändern der Server-Variablen *)
+(* Helper function for modifying server variables *)
 FUNCTION IncrementOpcUaTestDatatypes
 	pDatatypes.bBool := NOT(pDatatypes.bBool);
 	pDatatypes.nSint := pDatatypes.nSint + 1;
