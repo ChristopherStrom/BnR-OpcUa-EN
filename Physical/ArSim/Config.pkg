@@ -4,7 +4,7 @@
   <Objects>
     <Object Type="File" Description="Hardware configuration">Hardware.hw</Object>
     <Object Type="File" Description="Hardware topology">Hardware.hwl</Object>
-    <Object Type="Cpu">PC</Object>
+    <Object Type="Cpu">X20CP0483</Object>
     <Object Type="File">Hardware.jpg</Object>
     <Object Type="File">UtTestConfiguration.xml</Object>
   </Objects>

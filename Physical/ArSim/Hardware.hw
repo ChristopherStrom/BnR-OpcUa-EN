@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.10.4.38 FileVersion="4.9"?>
+<?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="OpcUa_any" Type="OpcUa_any" Version="1.0.0.1">
-    <Connection Connector="ETH1" TargetModule="PC" TargetConnector="IF3">
+    <Connection Connector="ETH1" TargetModule="X20CP0483" TargetConnector="IF2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="ServerDiagnostics" Value="on" />
@@ -50,16 +50,46 @@
     <Parameter ID="ChannelSamplingInterval6" Value="500" />
     <Parameter ID="ChannelType6" Value="UDINT" />
   </Module>
-  <Module Name="PC" Type="PC_any" Version="1.1.1.0" OrderNumber="PC">
+  <Module Name="X20BB52" Type="X20BB52" Version="1.2.0.0">
+    <Connector Name="IF6">
+      <Parameter ID="CycleTime" Value="2000" />
+    </Connector>
+  </Module>
+  <Module Name="X20BB80" Type="X20BB80" Version="1.1.0.0" />
+  <Module Name="X20BC0083" Type="X20BC0083" Version="2.14.0.0">
+    <Connection Connector="PLK1" TargetModule="X20CP0483" TargetConnector="IF3" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="SL" TargetModule="X20BB80" TargetConnector="SL1" />
+    <Parameter ID="Supervision" Value="off" />
+  </Module>
+  <Module Name="X20CP0483" Type="X20CP0483" Version="1.6.0.0">
+    <Connection Connector="SL" TargetModule="X20BB52" TargetConnector="SL1" />
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="InaPort" Value="11160" />
+    </Connector>
     <Parameter ID="ConfigurationID" Value="OpcUaSample49_ArSim" />
+    <Parameter ID="TimerDeviceType" Value="SWIOTIMER" />
     <Parameter ID="Cyclic1Duration" Value="10000" />
+    <Parameter ID="Cyclic1Tolerance" Value="10000" />
     <Parameter ID="Cyclic2Duration" Value="20000" />
+    <Parameter ID="Cyclic2Tolerance" Value="20000" />
     <Parameter ID="Cyclic3Duration" Value="50000" />
+    <Parameter ID="Cyclic3Tolerance" Value="50000" />
     <Parameter ID="Cyclic4Duration" Value="100000" />
+    <Parameter ID="Cyclic4Tolerance" Value="100000" />
     <Parameter ID="Cyclic5Duration" Value="200000" />
+    <Parameter ID="Cyclic5Tolerance" Value="200000" />
     <Parameter ID="Cyclic6Duration" Value="300000" />
+    <Parameter ID="Cyclic6Tolerance" Value="600000" />
     <Parameter ID="Cyclic7Duration" Value="500000" />
+    <Parameter ID="Cyclic7Tolerance" Value="1000000" />
     <Parameter ID="Cyclic8Duration" Value="10000" />
+    <Parameter ID="Cyclic8Tolerance" Value="30000000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaAnonymous" Value="1" />
     <Parameter ID="OpcUaUserName" Value="Admin" />
@@ -67,5 +97,18 @@
     <Parameter ID="OpcUa_Security_AdminRole" Value="Administrators" />
     <Parameter ID="OpcUa_Security_SoftwareCertificates" Value="SslCfgOpcUaServer" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="2" />
+    <Parameter ID="OpcUaInformationModel_BaseObjectTypeForStructures" Value="0" />
   </Module>
+  <Module Name="X20PS9400" Type="X20PS9400" Version="1.8.0.0">
+    <Connection Connector="SS1" TargetModule="X20TB12a" TargetConnector="SS" />
+    <Connection Connector="PS" TargetModule="X20BB80" TargetConnector="PS1" />
+    <Parameter ID="Supervision" Value="off" />
+  </Module>
+  <Module Name="X20PS9600" Type="X20PS9600" Version="1.6.0.0">
+    <Connection Connector="PS" TargetModule="X20BB52" TargetConnector="PS1" />
+    <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
+    <Parameter ID="Supervision" Value="off" />
+  </Module>
+  <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
+  <Module Name="X20TB12a" Type="X20TB12" Version="1.0.0.0" />
 </Hardware>
