@@ -1,87 +1,69 @@
+Here, variables are provided that the custom OpcUa server publishes.
 
-Hier werden Variablen zur Verfügung gestellt, die der eigene OpcUa-Server veröffentlicht.
+The server is configured in the system configuration under 'OPCUA Server'. The PV information model V2.0 is set.
 
-Der Server ist in der System-Konfiguration unter 'OPCUA Server' parametriert. Es ist das PV-Informationsmodell V2.0
-eingestellt.
+User/Role configuration is located at ConfigurationView/AccessAndSecurity/UserRoleSystem. The following authentication is specified:
+    Username:           Admin
+    Password:           admin
 
-Die User-/Roles-Parametrierung ist unter ConfigurationView/AccessAndSecurity/UserRoleSystem.  Hier ist folgende
-Authentifizierung angegeben:
-	Username:			Admin
-	Password:			admin
+Data is set up as a global variable 'gVarsGlobal' and as a local variable 'VarsLocal'.
+They are configured for the server in the file 'OpcUaMap.uad' (see ConfigurationView/Connectivity/OpcUa).
+They contain the structures 'Read', 'Write', and 'ReadWrite', which are also configured as such.
+These, in turn, contain a sub-element for each standard data type.
+Definitions are available under LogicalView/Global.typ.
+The elements of the 'Read' sub-structure are changed in the task cycle (500ms).
 
-Daten sind als globale Variable 'gVarsGlobal' und als lokale Variable 'VarsLocal' angelegt.
-Sie wurden in der Datei 'OpcUaMap.uad' (siehe ConfigurationView/Connectivity/OpcUa) für den Server konfiguriert.
-Sie enthalten die Strukturen 'Read', 'Write' und 'ReadWrite', welche auch so parametriert sind.
-Diese wiederum enthalten jeweils ein Unterelement jeden Standard-Datentyps.
-Definition siehe LogicalView/Global.typ.
-Die Elemente der Unter-Struktur 'Read' werden im Task-Takt (500ms) geändert.
+A translation of the 'Description' attribute is implemented as an example for the nodes 'gVarsGlobal' and 'VarsLocal'.
+The texts are retrieved from the file 'Texts/OpcUaServerTexts'.
 
-Eine Übersetzung des Attributes 'Description' ist beispielhaft bei den beiden Knoten 'gVarsGlobal' und 'VarsLocal'
-implementiert. Dabei werden die Texte aus der Datei 'Texts/OpcUaServerTexts' verwendet.
+Additionally, there are structures 'WriteC' and 'WriteST', whose elements are partially written to by clients.
 
-Ausserdem gibt es die Strukturen 'WriteC' und 'WriteST', auf deren Elemente teilweise von den Clients geschrieben wird.
+Use of dynamic arrays:
+    On a PLC, an array can never be dynamic, meaning it cannot have a variable length. 
+    The length of an array must be defined during project configuration and cannot be changed at runtime.
+    However, OpcUa supports dynamic arrays.
+    The B&R server can deliver an array declared on the PLC side as dynamic to OpcUa clients using a trick.
+    Similarly, a received dynamic array can be transferred to a fixed PLC array.
+    A simple example is the variable 'DynamicUintArrayLength', which is declared through a user-defined data type. 
+    The data type is as follows:
+        DynamicUintArrayLength_TYP:  STRUCT 
+            nLength: UAArrayLength;
+            anData: ARRAY[0..9] OF UINT;
+        END_STRUCT;
+    The element 'anData' contains the array with a fixed maximum length, as required on the PLC.
+    The element 'nLength' contains the number of valid array elements. By setting this value, the array served at the OpcUa server is adjusted.
+    The variable is normally released at the OpcUa server (without sub-elements). Based on the declaration, the system recognizes this variable as a dynamic array and handles it accordingly.
+    In a DirectRead or as a MonitoredItem of a subscription, an array with the current length is transmitted.
+    In a DirectWrite, the values transmitted as an array are written to 'anData', and 'nLength' is set accordingly.
+    The length can also be declared as 'UANoOfElements' instead of 'UAArrayLength'. The difference lies in the format in which the array is transmitted to or expected from the client:
+        UAArrayLength:       Transmitted as Uint16[].
+        UANoOfElements:      Transmitted as ExtensionObject containing the UINT array.
+        
+    An example of the second variant is the variable 'DynamicUintArrayElements'. Using a test client like UaExpert or RnCommTest, the difference in format can be easily recognized.
+    Which variant to use depends on the format the client can handle. On the PLC side, handling is identical.
+    
+    This concept works not only with all standard data types but also with structure arrays. Examples include the variables 'DynamicStructArrayLength' and 'DynamicStructArrayElements'.
+    Warning: At least one scalar instance of the usaed structure must be released for the data type to be published by the server, enabling the client to resolve the structure. If the structure data type is used only in an array, this will not happen!
+    
+    Warning: When writing to a dynamic array, the number of written elements MUST NOT exceed the length of the 'anData' array, as the server would then be unable to transfer the received data into the array.
+    If this is done, the server will not execute the write command and will return the status '0x8074000' = BadTypeMismatch!
+    
+    Note: Only 1-dimensional dynamic arrays are supported, not multi-dimensional arrays.
+    
+    Implementation in the example task:
+    Arrays are pre-set in the task’s Init. In the cyclic part (500ms), only the lengths of individual instances are randomly changed.
+    
+Known bugs in AR versions:
+    Fixed as of C4.72:
+        Definition with 'UAArrayLength':
+            For a dynamic standard data type array subscribed by the client, the server delivered only the current length upon value change instead of the array.
+            Note: Worked correctly with 'UANoOfElements'.
+    
+    Fixed as of B4.73:
+        Definition with 'UAArrayLength':
+            Usage as method argument did not work correctly. If fewer elements than the maximum number of elements were sent, the server acknowledged with '0x80AB000 = BadInvalidArgument'.
+            Note: Worked correctly with 'UANoOfElements'.
 
-Einsatz von dynamischen Arrays:
-	Auf einer SPS kann ein Array nie dynamisch sein, also keine variable Länge haben. Die Länge eines Arrays 
-	muss zur Projektierungszeit im AS  festgelegt werden und kann zur Laufzeit nicht mehr geändert werden.
-	OpcUa untersützt jedoch dynamische Arrays.
-	Der B&R-Server kann mit einem Trick ein in der SPS deklariertes Array OpcUa-seitig als dynamisch
-	ausliefern. Auch ein empfangenes dynamisches Array kann so auf ein festes SPS-Array übertragen werden.
-	Als einfaches Beispiel dient hier die Variable 'DynamicUintArrayLength', welche durch einen selbstdefinierten
-	Datentyp deklariert wird. Der Datentyp sieht so aus:
-		DynamicUintArrayLength_TYP : 	STRUCT 
-			nLength : UAArrayLength;
-			anData : ARRAY[0..9]OF UINT;
-		END_STRUCT;
-	Das Element 'anData' enthält das Array mit fester maximaler Länge, wie auf der SPS benötigt.
-	Das Element 'nLength' enthält die Anzahl der gültigen Array-Elemente. Durch Setzen dieses Wertes wird	das am 
-	OpcUa-Server bediente Array angepasst.
-	Die Variable wird ganz normal am OpcUa-Server freigegeben (ohne Unter-Elemente). Das System erkennt aufgrund der
-	Deklaration, dass diese	Variable ein dynamisches Array ist und behandelt es entsprechend.
-	Bei einem DirectRead oder als MonitoredItem einer Subscription wird ein Array mit der aktuellen Länge übertragen.
-	Bei einem DirectWrite werden die als Array übertragene Werte in 'anData' geschrieben und 'nLength' entsprechend
-	gesetzt.
-	Die Länge kann anstatt als 'UAArrayLength' auch als 'UANoOfElements' deklariert werden. Der Unterschied ist das Format,
-	in welchem das Array an den Client übertragen bzw. vom Client erwartet wird:
-		UAArrayLength:		Wird als Uint16[] übertragen.
-		UANoOfElements:		Wird als ExtensionObject übertragen. Es enthält das UINT-Array.
-		
-	Als Beispiel für die zweite Variante ist die Variable 'DynamicUintArrayElements' implementiert. Über einen Test-Client
-	wie UaExpert oder RnCommTest kann der Unterschied des Formats sehr leicht erkannt werden.
-	Welche Variante verwendet werden sollte, hängt davon ab, mit welchem Format der Client umgehen kann. Sps-seitig ist
-	Behandlung identisch.
-	
-	Dieses Konzept funktioniert nicht nur mit allen Standard-Datentypen, sondern auch mit Struktur-Arrays. Als Beispiele
-	sind die beiden Variablen 'DynamicStructArrayLength' bzw. 'DynamicStructArrayElements' implementiert.
-	Achtung: Mindestens eine skalare Instanz der verwendeten Struktur muss freigegeben sein, damit der Datentyp vom Server
-	veröffentlicht wird und es dem Client so ermöglicht, die Struktur aufzulösen. Wenn der Struktur-Datentyp nur im Array
-	verwendet wird, ist dies nicht der Fall!
-	
-	Achtung: Bei einem Schreib-Zugriff auf ein dynamisches Array darf die Anzahl der geschriebenen Elemente NICHT die 
-	Länge des Array 'anData' überschreiten, da der Server dann die empfangenen Daten nicht in das Array übertragen kann.
-	Wird dies	doch gemacht, führt der Server den Schreibauftrag nicht aus und gibt den Status
-	'0x8074000' = BadTypeMismatch	zurück!
-	
-	Hinweis: Bei dynamischen Arrays werden nur 1-dimensionale, aber keine mehrdimensionalen Arrays unterstützt.
-	
-	Implementierung im Beispiel-Task:
-	Die Arrays werden im Init des Tasks vorbesetzt. Im zyklischen Teil (500ms) werden nur die Längen der einzelnen
-	Instanzen zufällig verändert.
-	
-	Bekannte Bugs in AR-Versionen:
-	Behoben ab C4.72:
-		Definition mit 'UAArrayLength':
-			Bei einem dynamischen Standard-Datentypen-Array, welches vom Client über eine	Subscription abonniert wurde,
-			lieferte der Server bei einer Wert-Änderung nicht das Array, sondern nur die aktuelle Länge.
-			Hinweis: Mit 'UANoOfElements' funktionierte es korrekt.
-	
-	Behoben ab B4.73:
-		Definition mit 'UAArrayLength':
-			Die Verwendung als Methoden-Argument funktioniert nicht korrekt. Werden weniger Elemente als die maximale Anzahl
-			an Elementen gesendet, quittiert dies der Server mit '0x80AB000 = BadInvalidArgument'
-			Hinweis: Mit 'UANoOfElements' funktioniert es korrekt.
-
-Schreibbare Attribute:
-	Die Variable 'nWritableAttributes' ist in der Datei 'OpcUaMap.uad' so parametriert, dass die Attribute
-	'BrowseName', 'DisplayName' und 'Description' von einem Client beschrieben werden können.
-	Achtung: Geänderte Werte sind nicht warmstartsicher!
+Writable attributes:
+    The variable 'nWritableAttributes' is configured in the file 'OpcUaMap.uad' so that the attributes 'BrowseName', 'DisplayName', and 'Description' can be written to by a client.
+    Warning: Changed values are not retained after a warm start!
