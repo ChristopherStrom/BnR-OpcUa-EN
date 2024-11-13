@@ -1,3 +1,2 @@
-
-Das ist nur ein Muster, um damit schnell die Grund-Struktur eines neuen Tasks zu erstellen.
-Es wird für das Beispiel nicht benötigt.
+This is just a template for quickly creating the basic structure of a new task.
+It is not required for this example.
